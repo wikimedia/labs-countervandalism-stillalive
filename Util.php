@@ -1,4 +1,11 @@
 <?php
+/**
+ * Utilities.
+ *
+ * @author Timo Tijhof, 2013
+ * @package StillAlive
+ */
+
 class Util {
 	private static $rPropStringTpl = '/\{\s*([a-zA-Z0-9_\-$]+)\s*\}/';
 

@@ -2,10 +2,10 @@
 	"parameters": {
 		"cvn": "/data/project/cvn",
 		"cvn-bin": "{ cvn }/app",
-		"cvn-log": "/var/log/cvn"
+		"cvn-log": "{ cvn }/log"
 	},
 	"cwd": "/tmp",
-	"pool": [],
+	"tasks": [],
 	"templates": {
 		"CVNBot": {
 			"cwd": "{cvn-bin}/{name}",
@@ -13,7 +13,7 @@
 			"match": "mono {cvn-bin}/{name}/CVNBot.exe"
 		}
 	},
-	"template-pool": {
+	"template-tasks": {
 		"CVNBot": [
 			{ "name": "KrinkleBot2" },
 			{ "name": "KrinkleBot4" },
