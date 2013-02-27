@@ -89,13 +89,25 @@ foreach ( $localSettings['tasks'] as $taskID => $task ) {
 		$task['disabled'] = false;
 	}
 
+	// Still alive?
+	echo "\nTask: {$task['match']}\n";
+	$psLine = Util::findLine( $psDump, $task['match'] );
+	if ( $psLine !== false ) {
+		echo "\t=> RUNNING\n";
+		echo "\tps: {$psLine}\n";
+	} else {
+		echo "\t=> NOT RUNNING\n";
+	}
+
 	// Disabled? Ignore.
 	if ( isset( $task['disabled'] ) && $task['disabled'] === true ) {
+		echo "\t=> DISABLED\n";
 		continue;
 	}
 
-	// Wrong pool? Ignore.
+	// Different pool? Ignore.
 	if ( $opts->pool !== $task['pool'] ) {
+		echo "\t=> DIFFERENT POOL\n";
 		continue;
 	}
 
@@ -109,20 +121,14 @@ foreach ( $localSettings['tasks'] as $taskID => $task ) {
 		$task['cmd'] = 'nohup ' . $task['cmd'];
 	}
 
-	// Still alive? Keep running.
-	$psLine = Util::findLine( $psDump, $task['match'] );
-	if ( $psLine !== false ) {
-		echo "\nTask: Running\n\t$psLine\n";
-	} else {
-		echo "\nTask: Not running\n";
+	if ( !$opts->dry ) {
+		echo "\t=> START...\n";
 		echo "\tcwd: {$task['cwd']}\n";
 		echo "\tcmd: {$task['cmd']}\n";
-		if ( !$opts->dry ) {
-			chdir( $task['cwd'] );
-			exec( $task['cmd'] );
-		} else {
-			echo "\t -> DRY-RUN\n";
-		}
+		chdir( $task['cwd'] );
+		exec( $task['cmd'] );
 		sleep( 1 );
+	} else {
+		echo "\t=> DRY-RUN\n";
 	}
 }
