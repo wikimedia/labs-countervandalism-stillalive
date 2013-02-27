@@ -10,7 +10,8 @@
 		"CVNBot": {
 			"cwd": "{cvn-bin}/{name}",
 			"cmd": "mono {cvn-bin}/{name}/CVNBot.exe > {cvn-log}/{name}.log",
-			"match": "mono {cvn-bin}/{name}/CVNBot.exe"
+			"match": "mono {cvn-bin}/{name}/CVNBot.exe",
+			"pool": "cvn-app1"
 		}
 	},
 	"template-tasks": {
