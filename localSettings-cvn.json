@@ -15,7 +15,9 @@
 	},
 	"template-pool": {
 		"CVNBot": [
-			{ "name": "KrinkleBot4", "disabled": true },
+			{ "name": "KrinkleBot2" },
+			{ "name": "KrinkleBot4" },
+			{ "name": "KrinkleBot5" },
 			{ "name": "KrinkleBot7" }
 		]
 	}
