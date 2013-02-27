@@ -1,0 +1,14 @@
+{
+	// Restrict
+	"quotmark": "single",
+
+	// Tolerate
+	"strict": false,
+
+	// Environment
+	"node": true,
+
+	// LEgacy
+	"onevar": true,
+	"white": true
+}
