@@ -95,6 +95,7 @@ foreach ( $localSettings['tasks'] as $taskID => $task ) {
 	if ( $psLine !== false ) {
 		echo "\t=> RUNNING\n";
 		echo "\tps: {$psLine}\n";
+		continue;
 	} else {
 		echo "\t=> NOT RUNNING\n";
 	}
