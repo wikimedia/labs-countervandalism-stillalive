@@ -7,14 +7,14 @@
 	"cwd": "/tmp",
 	"tasks": [
 		{
-			"cmd": "{cvn-bin}/cvnclerkbot.sh > {cvn-log}/cvnclerkbot.log",
+			"cmd": "{cvn-bin}/cvnclerkbot.sh > {cvn-log}/cvnclerkbot.log 2>&1",
 			"pool": "cvn-app1"
 		}
 	],
 	"templates": {
 		"CVNBot": {
 			"cwd": "{cvn-bin}/{name}",
-			"cmd": "mono {cvn-bin}/{name}/CVNBot.exe > {cvn-log}/{name}.log",
+			"cmd": "mono {cvn-bin}/{name}/CVNBot.exe > {cvn-log}/{name}.log 2>&1",
 			"match": "mono {cvn-bin}/{name}/CVNBot.exe",
 			"pool": "cvn-app1"
 		}
