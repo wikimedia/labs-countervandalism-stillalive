@@ -5,7 +5,12 @@
 		"cvn-log": "{ cvn }/log"
 	},
 	"cwd": "/tmp",
-	"tasks": [],
+	"tasks": [
+		{
+			"cmd": "{cvn-bin}/cvnclerkbot.sh > {cvn-log}/cvnclerkbot.log",
+			"pool": "cvn-app1"
+		}
+	],
 	"templates": {
 		"CVNBot": {
 			"cwd": "{cvn-bin}/{name}",

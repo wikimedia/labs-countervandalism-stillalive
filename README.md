@@ -49,7 +49,7 @@ Example:
 ```js
 {
 	"cmd": "node awesome-server.js --ratio 1.2",
-	
+
 	// Switch to this directory before executing the command
 	// Default: settings.cwd
 	"cwd": "/opt/awesome-server",
