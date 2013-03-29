@@ -2,12 +2,14 @@
 	"parameters": {
 		"cvn": "/data/project/cvn",
 		"cvn-bin": "{ cvn }/app",
-		"cvn-log": "{ cvn }/log"
+		"cvn-log": "{ cvn }/log",
+		"cvn-src": "{ cvn }/externals"
 	},
 	"cwd": "/tmp",
 	"tasks": [
 		{
 			"cmd": "{cvn-bin}/cvnclerkbot.sh > {cvn-log}/cvnclerkbot.log 2>&1",
+			"match": "python {cvn-src}/CVNClerkBot/cvnclerkbot.py",
 			"pool": "cvn-app1"
 		}
 	],
