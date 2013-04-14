@@ -16,12 +16,14 @@ templates and minimalistic syntax.
 ## Command line options
 
 ```
-Usage: php stillalive.php [options]
+usage: stillalive [options]
 
-   --verbose   Output extra information
-       --dry   Dry run (don't actually execute any tasks)
- --pool=<id>   Only run tasks in this pool
-
+    --dry                Dry run (won't actually execute any tasks).
+    --pool=<pool-id>     Only tasks in this pool will be kept alive.
+                         If not specified, only tasks with no pool
+                         target will kept alive on this node.
+    --verbose            Be verbose in output.
+    --help               Show this message.
 ```
 
 ## localSettings

@@ -1,23 +1,39 @@
-#!/usr/bin/env php
 <?php
 /**
  * Main entry point for StillAlive.
  * Goes through and ensures that all tasks are running.
- * 
+ *
  * @author Timo Tijhof, 2013
  * @package StillAlive
  */
 
 require_once( __DIR__ . '/Util.php' );
 
-$opts = (object)getopt('', array(
+$opts = (object) getopt( '', array(
 	'verbose',
 	'dry',
+	'help',
 	'pool::'
-));
+) );
 $opts->verbose = isset( $opts->verbose );
 $opts->dry = isset( $opts->dry );
+$opts->help = isset( $opts->help );
 $opts->pool = isset( $opts->pool ) ? strval( $opts->pool ) : false;
+
+if ( $opts->help ) {
+	echo <<<TXT
+usage: {$argv[0]} [options]
+
+    --dry                Dry run (won't actually execute any tasks).
+    --pool=<pool-id>     Only tasks in this pool will be kept alive.
+                         If not specified, only tasks with no pool
+                         target will kept alive on this node.
+    --verbose            Be verbose in output.
+    --help               Show this message.
+TXT;
+	echo "\n";
+	exit( 1 );
+}
 
 $localSettings = json_decode(
 	Util::stripComments(
@@ -28,7 +44,8 @@ $localSettings = json_decode(
 
 if ( !$localSettings ) {
 	echo 'SyntaxError while parsing JSON. Ensure localSettings.json exists and contains valid JSON.';
-	echo "\n"; exit( 1 );
+	echo "\n";
+	exit( 1 );
 }
 Util::placeholder( $localSettings, $localSettings['parameters'] );
 
