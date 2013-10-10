@@ -23,6 +23,7 @@
 	},
 	"template-tasks": {
 		"CVNBot": [
+			{ "name": "CVNBot14" },
 			{ "name": "KrinkleBot2" },
 			{ "name": "KrinkleBot4" },
 			{ "name": "KrinkleBot5" },
