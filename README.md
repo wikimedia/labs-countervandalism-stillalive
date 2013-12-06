@@ -13,6 +13,13 @@ templates and minimalistic syntax.
 1. Run `php stillalive.php` at a regular interval (e.g. from
    crontab).
 
+Example crontab entry:
+```
+$ cat /etc/crontab
+
+*/2 * * * *	root	/usr/local/bin/stillalive --pool=cvn-srv103 > /dev/null
+```
+
 ## Command line options
 
 ```
