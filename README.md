@@ -103,7 +103,7 @@ with parameters for each template.
 The example makes it easier to understand.
 
 ## Example
-So, all in all, this is that it can look like:
+So, all in all, this is what it could look like:
 ```js
 {
 	"parameters": {
