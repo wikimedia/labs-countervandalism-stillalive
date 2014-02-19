@@ -17,17 +17,16 @@
 		"CVNBot": {
 			"cwd": "{cvn-bin}/{name}",
 			"cmd": "mono {cvn-bin}/{name}/CVNBot.exe > {cvn-log}/{name}.log 2>&1",
-			"match": "mono {cvn-bin}/{name}/CVNBot.exe",
-			"pool": "cvn-app1"
+			"match": "mono {cvn-bin}/{name}/CVNBot.exe"
 		}
 	},
 	"template-tasks": {
 		"CVNBot": [
-			{ "name": "CVNBot14" },
-			{ "name": "KrinkleBot2" },
-			{ "name": "KrinkleBot4" },
-			{ "name": "KrinkleBot5" },
-			{ "name": "KrinkleBot7" }
+			{ "name": "CVNBot14", "pool": "cvn-app2" },
+			{ "name": "KrinkleBot2", "pool": "cvn-app1" },
+			{ "name": "KrinkleBot4", "pool": "cvn-app1" },
+			{ "name": "KrinkleBot5", "pool": "cvn-app1" },
+			{ "name": "KrinkleBot7", "pool": "cvn-app1" }
 		]
 	}
 }
