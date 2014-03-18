@@ -23,8 +23,8 @@
 	"template-tasks": {
 		"CVNBot": [
 			{ "name": "CVNBot14", "pool": "cvn-app2" },
-			{ "name": "KrinkleBot2", "pool": "cvn-app1" },
-			{ "name": "KrinkleBot4", "pool": "cvn-app1" },
+			{ "name": "KrinkleBot2", "pool": "cvn-app2" },
+			{ "name": "KrinkleBot4", "pool": "cvn-app2" },
 			{ "name": "KrinkleBot5", "pool": "cvn-app1" },
 			{ "name": "KrinkleBot7", "pool": "cvn-app2" }
 		]
