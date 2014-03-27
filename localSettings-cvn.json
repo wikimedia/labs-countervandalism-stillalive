@@ -10,7 +10,7 @@
 		{
 			"cmd": "{cvn-bin}/cvnclerkbot.sh > {cvn-log}/cvnclerkbot.log 2>&1",
 			"match": "python {cvn-src}/CVNClerkBot/cvnclerkbot.py",
-			"pool": "cvn-app2"
+			"pool": "cvn-app5"
 		}
 	],
 	"templates": {
@@ -22,11 +22,11 @@
 	},
 	"template-tasks": {
 		"CVNBot": [
-			{ "name": "CVNBot14", "pool": "cvn-app2" },
-			{ "name": "KrinkleBot2", "pool": "cvn-app2" },
-			{ "name": "KrinkleBot4", "pool": "cvn-app2" },
+			{ "name": "CVNBot14", "pool": "cvn-app5" },
+			{ "name": "KrinkleBot2", "pool": "cvn-app4" },
+			{ "name": "KrinkleBot4", "pool": "cvn-app4" },
 			{ "name": "KrinkleBot5", "pool": "cvn-app4" },
-			{ "name": "KrinkleBot7", "pool": "cvn-app2" }
+			{ "name": "KrinkleBot7", "pool": "cvn-app4" }
 		]
 	}
 }
