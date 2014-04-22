@@ -26,7 +26,7 @@
 			{ "name": "KrinkleBot2", "pool": "cvn-app4" },
 			{ "name": "KrinkleBot4", "pool": "cvn-app4" },
 			{ "name": "KrinkleBot5", "pool": "cvn-app4" },
-			{ "name": "KrinkleBot7", "pool": "cvn-app4" }
+			{ "name": "CVNBot12", "pool": "cvn-app4" }
 		]
 	}
 }
