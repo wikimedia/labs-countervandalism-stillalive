@@ -28,7 +28,7 @@
 			{ "name": "CVNBot4", "pool": "cvn-app4" },
 			{ "name": "CVNBot12", "pool": "cvn-app4" },
 			{ "name": "CVNBot13", "pool": "cvn-app4" },
-			{ "name": "CVNBot14", "pool": "cvn-app5" }
+			{ "name": "CVNBot14", "pool": "cvn-app4" }
 		]
 	}
 }
