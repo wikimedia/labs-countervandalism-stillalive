@@ -1,8 +1,7 @@
 {
 	"parameters": {
 		"cvn": "/srv/cvn",
-		"common": "/data/project/cvn-common",
-		"legacy": "/data/project/cvn"
+		"common": "/data/project/cvn-common"
 	},
 	"cwd": "/tmp",
 	"user": "cvn.cvnservice",
@@ -16,9 +15,9 @@
 	],
 	"templates": {
 		"CVNBot": {
-			"cwd": "{legacy}/app/{name}",
-			"cmd": "mono {legacy}/app/{name}/CVNBot.exe > {legacy}/log/{name}.log 2>&1",
-			"match": "mono {legacy}/app/{name}/CVNBot.exe"
+			"cwd": "{cvn}/services/cvnbots/{name}",
+			"cmd": "mono {cvn}/services/cvnbots/{name}/CVNBot.exe > {cvn}/log/{name}.log 2>&1",
+			"match": "mono {cvn}/services/cvnbots/{name}/CVNBot.exe"
 		}
 	},
 	"template-tasks": {
@@ -29,7 +28,7 @@
 			{ "name": "CVNBot4", "pool": "cvn-app4" },
 			{ "name": "CVNBot12", "pool": "cvn-app4" },
 			{ "name": "CVNBot13", "pool": "cvn-app4" },
-			{ "name": "CVNBot14", "pool": "cvn-app4" }
+			{ "name": "CVNBot14", "pool": "cvn-app5" }
 		]
 	}
 }
