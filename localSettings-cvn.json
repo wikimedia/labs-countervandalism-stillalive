@@ -15,9 +15,9 @@
 	],
 	"templates": {
 		"CVNBot": {
-			"cwd": "{cvn}/services/cvnbots/{name}",
-			"cmd": "mono {cvn}/services/cvnbots/{name}/CVNBot.exe > {cvn}/log/{name}.log 2>&1",
-			"match": "mono {cvn}/services/cvnbots/{name}/CVNBot.exe"
+			"cwd": "{cvn}/services/cvnbot/{name}",
+			"cmd": "mono {cvn}/services/cvnbot/{name}/CVNBot.exe > {cvn}/log/{name}.log 2>&1",
+			"match": "mono {cvn}/services/cvnbot/{name}/CVNBot.exe"
 		}
 	},
 	"template-tasks": {
