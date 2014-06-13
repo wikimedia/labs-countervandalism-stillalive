@@ -6,6 +6,7 @@
 		"cvn-src": "{ cvn }/externals"
 	},
 	"cwd": "/tmp",
+	"user": "cvn.cvnservice",
 	"tasks": [
 		{
 			"cmd": "{cvn-bin}/cvnclerkbot.sh > {cvn-log}/cvnclerkbot.log 2>&1",

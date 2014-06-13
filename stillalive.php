@@ -51,6 +51,19 @@ Util::placeholder( $localSettings, $localSettings['parameters'] );
 
 $psDump = `ps aux`;
 
+// Required fields
+foreach ( array( 'template-tasks', 'templates', 'tasks', 'cwd' ) as $key ) {
+	if ( !isset( $localSettings[$key] ) ) {
+		echo "Required key '$key' must exist in localSettings.json.\n";
+		exit( 1 );
+	}
+}
+
+// Optional fields
+if ( !isset( $localSettings['user'] ) ) {
+	$localSettings['user'] = false;
+}
+
 // Process templates
 foreach ( $localSettings['template-tasks'] as $templateID => $entries ) {
 	foreach ( $entries as $entry ) {
@@ -58,7 +71,7 @@ foreach ( $localSettings['template-tasks'] as $templateID => $entries ) {
 		Util::placeholder( $copy, $entry );
 
 		// Optional overrides
-		foreach ( array( 'cmd', 'cwd', 'match', 'pool', 'disabled' ) as $key ) {
+		foreach ( array( 'cmd', 'cwd', 'user', 'match', 'pool', 'disabled' ) as $key ) {
 			if ( isset( $entry[$key] ) ) {
 				$copy[$key] = $entry[$key];
 			}
@@ -93,6 +106,9 @@ foreach ( $localSettings['tasks'] as $taskID => $task ) {
 	// Optional
 	if ( !isset( $task['cwd'] ) ) {
 		$task['cwd'] = $localSettings['cwd'];
+	}
+	if ( !isset( $task['user'] ) ) {
+		$task['user'] = $localSettings['user'];
 	}
 	if ( !isset( $task['match'] ) ) {
 		// We're using match instead of PID because our bots
@@ -137,6 +153,11 @@ foreach ( $localSettings['tasks'] as $taskID => $task ) {
 	}
 	if ( substr( $task['cmd'], 0, 6 ) !== 'nohup ' ) {
 		$task['cmd'] = 'nohup ' . $task['cmd'];
+	}
+
+	// Override user if specified
+	if ( $task['user'] ) {
+		$task['cmd'] = 'sudo -u ' . escapeshellarg( $task['user'] ) . ' ' . $task['cmd'];
 	}
 
 	if ( !$opts->dry ) {
