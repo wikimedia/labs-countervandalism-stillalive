@@ -23,7 +23,7 @@
 	"template-tasks": {
 		"CVNBot": [
 			{ "name": "CVNBot1", "pool": "cvn-app5" },
-			{ "name": "CVNBot2", "pool": "cvn-app4" },
+			{ "name": "CVNBot2", "pool": "cvn-app5" },
 			{ "name": "CVNBot3", "pool": "cvn-app4" },
 			{ "name": "CVNBot4", "pool": "cvn-app4" },
 			{ "name": "CVNBot12", "pool": "cvn-app4" },
