@@ -1,7 +1,6 @@
 {
 	"parameters": {
-		"cvn": "/srv/cvn",
-		"common": "/data/project/cvn-common"
+		"cvn": "/srv/cvn"
 	},
 	"cwd": "/tmp",
 	"user": "cvn.cvnservice",
