@@ -21,6 +21,7 @@
 	},
 	"template-tasks": {
 		"CVNBot": [
+			{ "name": "Cubbie", "pool": "cvn-app5" },
 			{ "name": "CVNBot1", "pool": "cvn-app5" },
 			{ "name": "CVNBot2", "pool": "cvn-app5" },
 			{ "name": "CVNBot3", "pool": "cvn-app5" },
