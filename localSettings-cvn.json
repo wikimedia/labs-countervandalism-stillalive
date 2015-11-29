@@ -40,6 +40,7 @@
 			{ "name": "CVNBot18", "pool": "cvn-app5" },
 			{ "name": "CVNBot19", "pool": "cvn-app5" },
 			{ "name": "CVNBot20", "pool": "cvn-app5" },
+			{ "name": "CVNBot21", "pool": "cvn-app5" },
 			{ "name": "SWBot3", "pool": "cvn-app5" }
 		]
 	}
