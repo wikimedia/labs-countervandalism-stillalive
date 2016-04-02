@@ -1,21 +1,20 @@
 <?php
 /**
- * Utilities.
+ * Utilities for StillAlive.
  *
- * @author Timo Tijhof, 2013
- * @package StillAlive
+ * @author Timo Tijhof, 2013-2016
+ * @package stillalive
  */
 
 class Util {
 	private static $rPropStringTpl = '/\{\s*([a-zA-Z0-9_\-$]+)\s*\}/';
 
 	/**
-	 * From jshint/cli.js
+	 * From http://stackoverflow.com/a/19136663/319266
 	 * @param string $str
 	 */
 	public static function stripComments( $str = '' ) {
-		$str = preg_replace( '/\/\*(?:(?!\*\/)[\s\S])*\*\//', '', $str );
-		$str = preg_replace( '/\/\/[^\n\r]*/', '', $str );
+		$str = preg_replace( '![ \t]*//.*[ \t]*[\r\n]!', '', $str );
 
 		return $str;
 	}
@@ -28,10 +27,10 @@ class Util {
 	 * @param Object &$parameters
 	 * @return string
 	 */
-	public static function placeholder( &$x, &$parameters = array(), $prefix = '-' ) {
-		if ( is_array( $x) ) {
+	public static function placeholder( &$x, &$parameters = array() ) {
+		if ( is_array( $x ) ) {
 			foreach ( $x as $key => &$value ) {
-				$value = self::placeholder( $value, $parameters, "-$prefix" );
+				$value = self::placeholder( $value, $parameters );
 			}
 		} elseif ( is_string( $x ) ) {
 			$x = preg_replace_callback( self::$rPropStringTpl, function ( $matches ) use ( $parameters ) {

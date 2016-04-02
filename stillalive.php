@@ -3,11 +3,11 @@
  * Main entry point for StillAlive.
  * Goes through and ensures that all tasks are running.
  *
- * @author Timo Tijhof, 2013
- * @package StillAlive
+ * @author Timo Tijhof, 2013-2016
+ * @package stillalive
  */
 
-require_once( __DIR__ . '/Util.php' );
+require_once __DIR__ . '/Util.php';
 
 $opts = (object) getopt( '', array(
 	'verbose',
@@ -37,7 +37,7 @@ TXT;
 
 $localSettings = json_decode(
 	Util::stripComments(
-		@file_get_contents( __DIR__ . '/localSettings.json' )
+		file_get_contents( __DIR__ . '/localSettings.json' )
 	),
 	true
 );
@@ -101,7 +101,8 @@ foreach ( $localSettings['tasks'] as $taskID => $task ) {
 	// Required
 	if ( !isset( $task['cmd'] ) ) {
 		echo 'Missing "cmd" property in tasks[' . $taskID . '].';
-		echo "\n"; exit( 1 );
+		echo "\n";
+		exit( 1 );
 	}
 	// Optional
 	if ( !isset( $task['cwd'] ) ) {

@@ -1,1 +1,6 @@
+# install
 localSettings.json
+
+# build
+vendor
+composer.lock

@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/countervandalism/stillalive.svg?branch=master)](https://travis-ci.org/countervandalism/stillalive)
+
 # stillalive
 
 A basic PHP script to ensure certain processes stay alive.
