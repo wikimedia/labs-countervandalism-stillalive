@@ -27,6 +27,8 @@
 			{ "name": "CVNBot7", "pool": "cvn-app4" }, // #cvn-sw (SWMT group 2)
 			{ "name": "CVNBot8", "pool": "cvn-app4" }, // #cvn-sw (SWMT group 3)
 			{ "name": "CVNBot9", "pool": "cvn-app4" }, // #cvn-sw (SWMT group 4)
+			{ "name": "CVNBot10", "pool": "cvn-app4" }, // #cvn-sw (SWMT group 5)
+			{ "name": "CVNBot19", "pool": "cvn-app4" }, // #cvn-sw (SWMT group 6)
 
 			// cvn-app5: all others
 			{ "name": "Cubbie", "pool": "cvn-app5" }, // #cvn-commons
@@ -35,14 +37,12 @@
 			{ "name": "CVNBot3", "pool": "cvn-app5" }, // #cvn-wp-es
 			{ "name": "CVNBot4", "pool": "cvn-app5" }, // #cvn-it-scan (all it-lang wikis)
 			{ "name": "CVNBot5", "pool": "cvn-app5" }, // #cvn-meta
-			{ "name": "CVNBot10", "pool": "cvn-app4" }, // #cvn-sw (SWMT group 5)
 			{ "name": "CVNBot12", "pool": "cvn-app5" }, // #cvn-wp-nl
 			{ "name": "CVNBot13", "pool": "cvn-app5" }, // #cvn-wp-da
 			{ "name": "CVNBot14", "pool": "cvn-app5" }, // #cvn-commons
 			{ "name": "CVNBot16", "pool": "cvn-app5" }, // #cvn-ja (all ja-lang wikis)
 			{ "name": "CVNBot17", "pool": "cvn-app5" }, // #cvn-wikivoyage (all Wikivoyage wikis)
 			{ "name": "CVNBot18", "pool": "cvn-app5" }, // #cvn-wikidata
-			{ "name": "CVNBot19", "pool": "cvn-app5" }, // #cvn-sw (SWMT group 6)
 			{ "name": "CVNBot20", "pool": "cvn-app5" }, // #cvn-bn-scan (all bg-lang wikis)
 			{ "name": "CVNBot21", "pool": "cvn-app5" }, // #cvn-mediawiki
 			{ "name": "CVNBot22", "pool": "cvn-app5" }, // #cvn-mk-scan (some mk-lang wikis)
