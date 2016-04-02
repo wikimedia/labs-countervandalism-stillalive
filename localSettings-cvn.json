@@ -28,8 +28,8 @@
 		// - Light: Less than 1% CPU and wiki has under 10 million edits
 		"CVNBot": [
 			// cvn-app4: SWMT bots (3 Heavy, 2 Medium)
-			{ "name": "CVNBot2", "pool": "cvn-app5" }, // #cvn-wp-ru (Medium)
-			{ "name": "CVNBot3", "pool": "cvn-app5" }, // #cvn-wp-es (Heavy)
+			{ "name": "CVNBot2", "pool": "cvn-app4" }, // #cvn-wp-ru (Medium)
+			{ "name": "CVNBot3", "pool": "cvn-app4" }, // #cvn-wp-es (Heavy)
 			{ "name": "CVNBot6", "pool": "cvn-app4" }, // #cvn-sw (SWMT group 1; Heavy)
 			{ "name": "CVNBot7", "pool": "cvn-app4" }, // #cvn-sw (SWMT group 2; Medium)
 			{ "name": "CVNBot8", "pool": "cvn-app4" }, // #cvn-sw (SWMT group 3; Heavy)
