@@ -36,7 +36,7 @@
 			{ "name": "CVNBot9", "pool": "cvn-app4" }, // #cvn-sw (SWMT group 4; Light)
 			{ "name": "CVNBot10", "pool": "cvn-app4" }, // #cvn-sw (SWMT group 5; Light)
 			{ "name": "CVNBot19", "pool": "cvn-app4" }, // #cvn-sw (SWMT group 6; Light)
-			{ "name": "CVNBot23", "pool": "cvn-app4" }, // #cvn-zh-scan
+			{ "name": "CVNBot23", "pool": "cvn-app4" }, // #cvn-zh-scan (per countervandalism/infrastructure#7 )
 
 			// cvn-app5: most others (1 Super Heavy, 2 Heavy, 4 Medium)
 			{ "name": "Cubbie", "pool": "cvn-app5" }, // #cvn-commons-uploads (Medium)
