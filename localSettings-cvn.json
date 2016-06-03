@@ -58,7 +58,7 @@
 
 			// Server: cvn-app6 (CPU: 4x, Memory: 8GB RAM)
 			// Load: 1 Medium
-			{ "name": "CVNBot2", "pool": "cvn-app4" } // #cvn-wp-ru (Medium)
+			{ "name": "CVNBot2", "pool": "cvn-app6" } // #cvn-wp-ru (Medium)
 		]
 	}
 }
