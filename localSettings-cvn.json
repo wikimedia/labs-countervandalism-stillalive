@@ -27,7 +27,8 @@
 		// - Medium: Over 1% CPU (or wiki has over 10 million edits)
 		// - Light: Less than 1% CPU and wiki has under 10 million edits
 		"CVNBot": [
-			// cvn-app4: SWMT bots (3 Heavy, 2 Medium)
+			// Server: cvn-app4 (CPU: 8x, Memory: 16GB RAM)
+			// Load: 3 Heavy, 2 Medium
 			{ "name": "CVNBot2", "pool": "cvn-app4" }, // #cvn-wp-ru (Medium)
 			{ "name": "CVNBot3", "pool": "cvn-app4" }, // #cvn-wp-es (Heavy)
 			{ "name": "CVNBot6", "pool": "cvn-app4" }, // #cvn-sw (SWMT group 1; Heavy)
@@ -38,7 +39,8 @@
 			{ "name": "CVNBot19", "pool": "cvn-app4" }, // #cvn-sw (SWMT group 6; Light)
 			{ "name": "CVNBot23", "pool": "cvn-app4" }, // #cvn-zh-scan (per countervandalism/infrastructure#7 )
 
-			// cvn-app5: most others (1 Super Heavy, 2 Heavy, 4 Medium)
+			// Server: cvn-app5 (CPU: 8x, Memory: 16GB RAM)
+			// Load: 1 Super Heavy, 2 Heavy, 4 Medium
 			{ "name": "Cubbie", "pool": "cvn-app5" }, // #cvn-commons-uploads (Medium)
 			{ "name": "CVNBot1", "pool": "cvn-app5" }, // #cvn-wp-en (Heavy)
 			{ "name": "CVNBot4", "pool": "cvn-app5" }, // #cvn-it-scan (Medium)
