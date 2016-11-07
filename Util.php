@@ -6,8 +6,27 @@
  * @package stillalive
  */
 
+use Symfony\Component\Yaml\Yaml;
+use Symfony\Component\Yaml\Exception\ParseException;
+
 class Util {
 	private static $rPropStringTpl = '/\{\s*([a-zA-Z0-9_\-$]+)\s*\}/';
+
+	/**
+	 * @return boolean|array
+	 * @throws ParseException
+	 */
+	public static function loadConfig( $filename ) {
+		if ( !is_readable( $filename ) ) {
+			return false;
+		}
+		$contents = file_get_contents( $filename );
+		if ( substr( $filename, -4 ) === 'json' ) {
+			return json_decode( self::stripComments( $contents ), true );
+		} else {
+			return Yaml::parse( $contents );
+		}
+	}
 
 	/**
 	 * From http://stackoverflow.com/a/19136663/319266

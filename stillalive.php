@@ -7,6 +7,7 @@
  * @package stillalive
  */
 
+require_once __DIR__ . '/vendor/autoload.php';
 require_once __DIR__ . '/Util.php';
 
 $opts = (object) getopt( '', array(
@@ -35,15 +36,11 @@ TXT;
 	exit( 1 );
 }
 
-$localSettings = json_decode(
-	Util::stripComments(
-		file_get_contents( __DIR__ . '/localSettings.json' )
-	),
-	true
-);
+$localSettings = Util::loadConfig( __DIR__ . '/localSettings.yaml' )
+	?: Util::loadConfig( __DIR__ . '/localSettings.json' );
 
 if ( !$localSettings ) {
-	echo 'SyntaxError while parsing JSON. Ensure localSettings.json exists and contains valid JSON.';
+	echo 'Unable to read and parsing localSettings.yaml or localSettings.json.';
 	echo "\n";
 	exit( 1 );
 }
@@ -54,7 +51,7 @@ $psDump = `ps aux`;
 // Required fields
 foreach ( array( 'template-tasks', 'templates', 'tasks', 'cwd' ) as $key ) {
 	if ( !isset( $localSettings[$key] ) ) {
-		echo "Required key '$key' must exist in localSettings.json.\n";
+		echo "Required key '$key' must exist in settings file.\n";
 		exit( 1 );
 	}
 }

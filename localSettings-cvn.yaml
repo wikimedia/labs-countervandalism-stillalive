@@ -1,0 +1,56 @@
+parameters:
+  cvn: "/srv/cvn"
+cwd: "/tmp"
+user: "cvn.cvnservice"
+tasks:
+  -
+    cmd: "{cvn}/services/CVNClerkBot/init.sh > {cvn}/log/cvnclerkbot.log 2>&1"
+    match: "python {cvn}/git/CVNClerkBot/cvnclerkbot.py"
+    pool: "cvn-app5"
+    user: false
+templates:
+  CVNBot:
+    cwd: "{cvn}/services/cvnbot/{name}"
+    cmd: "mono {cvn}/services/cvnbot/{name}/CVNBot.exe > {cvn}/log/{name}.log 2>&1"
+    match: "mono {cvn}/services/cvnbot/{name}/CVNBot.exe"
+template-tasks:
+    # https://meta.wikimedia.org/wiki/Countervandalism_Network/Bots
+    # Legend:
+    # - Super Heavy: Over 25% CPU (or wiki has over 100 million edits)
+    # - Heavy: Between 10-25% CPU (or wiki has over 100 million edits)
+    # - Medium: Over 1% CPU (or wiki has over 10 million edits)
+    # - Light: Less than 1% CPU and wiki has under 10 million edits
+    "CVNBot":
+      # Server: cvn-app4 (CPU: 8x, Memory: 16GB RAM)
+      # Load: 3 Heavy, 1 Medium
+      - { "name": "CVNBot3", "pool": "cvn-app4" } # #cvn-wp-es (Heavy)
+      - { "name": "CVNBot6", "pool": "cvn-app4" } # #cvn-sw (SWMT group 1; Heavy)
+      - { "name": "CVNBot7", "pool": "cvn-app4" } # #cvn-sw (SWMT group 2; Medium)
+      - { "name": "CVNBot8", "pool": "cvn-app4" } # #cvn-sw (SWMT group 3; Heavy)
+      - { "name": "CVNBot9", "pool": "cvn-app4" } # #cvn-sw (SWMT group 4; Light)
+      - { "name": "CVNBot10", "pool": "cvn-app4" } # #cvn-sw (SWMT group 5; Light)
+      - { "name": "CVNBot19", "pool": "cvn-app4" } # #cvn-sw (SWMT group 6; Light)
+      - { "name": "CVNBot23", "pool": "cvn-app4" } # #cvn-zh-scan (per countervandalism/infrastructure#7 )
+
+      # Server: cvn-app5 (CPU: 8x, Memory: 16GB RAM)
+      # Load: 1 Super Heavy, 2 Heavy, 4 Medium
+      - { "name": "Cubbie", "pool": "cvn-app5" } # #cvn-commons-uploads (Medium)
+      - { "name": "CVNBot1", "pool": "cvn-app5" } # #cvn-wp-en (Heavy)
+      - { "name": "CVNBot4", "pool": "cvn-app5" } # #cvn-it-scan (Medium)
+      - { "name": "CVNBot5", "pool": "cvn-app5" } # #cvn-meta (Light)
+      - { "name": "CVNBot12", "pool": "cvn-app5" } # #cvn-wp-nl (Medium)
+      - { "name": "CVNBot13", "pool": "cvn-app5" } # #cvn-wp-da (Light)
+      # CVNBot14 is used by cvndb-pull which is linked to cvn-app5
+      - { "name": "CVNBot14", "pool": "cvn-app5" } # #cvn-commons (Heavy)
+      - { "name": "CVNBot16", "pool": "cvn-app5" } # #cvn-ja (Medium)
+      - { "name": "CVNBot17", "pool": "cvn-app5" } # #cvn-wikivoyage (Light)
+      - { "name": "CVNBot18", "pool": "cvn-app5" } # #cvn-wikidata (Super Heavy)
+      - { "name": "CVNBot20", "pool": "cvn-app5" } # #cvn-bn-scan (Light)
+      - { "name": "CVNBot21", "pool": "cvn-app5" } # #cvn-mediawiki (Light)
+      - { "name": "CVNBot22", "pool": "cvn-app5" } # #cvn-mk-scan (Light)
+      - { "name": "SWBot3", "pool": "cvn-app5" } # #cvn-simplewikis (Light)
+
+      # Server: cvn-app6 (CPU: 4x, Memory: 8GB RAM)
+      # Load: 1 Medium
+      - { "name": "CVNBot2", "pool": "cvn-app6" } # #cvn-wp-ru (Medium)
+
