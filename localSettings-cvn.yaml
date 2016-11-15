@@ -21,10 +21,6 @@ template-tasks:
     # - Medium: Over 1% CPU (or wiki has over 10 million edits)
     # - Light: Less than 1% CPU and wiki has under 10 million edits
     "CVNBot":
-      # Server: cvn-app4 (CPU: 8x, Memory: 16GB RAM)
-      # Load: Light
-      - { "name": "CVNBot23", "pool": "cvn-app4" } # #cvn-zh-scan (per countervandalism/infrastructure#7 )
-
       # Server: cvn-app5 (CPU: 8x, Memory: 16GB RAM)
       # Load: 1 Super Heavy, 2 Heavy, 4 Medium
       - { "name": "Cubbie", "pool": "cvn-app5" } # #cvn-commons-uploads (Medium)
@@ -53,4 +49,5 @@ template-tasks:
       - { "name": "CVNBot9", "pool": "cvn-app6" } # #cvn-sw (SWMT group 4; Light)
       - { "name": "CVNBot10", "pool": "cvn-app6" } # #cvn-sw (SWMT group 5; Light)
       - { "name": "CVNBot19", "pool": "cvn-app6" } # #cvn-sw (SWMT group 6; Light)
+      - { "name": "CVNBot23", "pool": "cvn-app6" } # #cvn-zh-scan (Light)
 
