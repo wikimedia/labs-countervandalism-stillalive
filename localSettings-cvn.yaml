@@ -22,8 +22,7 @@ template-tasks:
     # - Light: Less than 1% CPU and wiki has under 10 million edits
     "CVNBot":
       # Server: cvn-app4 (CPU: 8x, Memory: 16GB RAM)
-      # Load: 3 Heavy, 1 Medium
-      - { "name": "CVNBot3", "pool": "cvn-app4" } # #cvn-wp-es (Heavy)
+      # Load: 2 Heavy, 1 Medium
       - { "name": "CVNBot6", "pool": "cvn-app4" } # #cvn-sw (SWMT group 1; Heavy)
       - { "name": "CVNBot7", "pool": "cvn-app4" } # #cvn-sw (SWMT group 2; Medium)
       - { "name": "CVNBot8", "pool": "cvn-app4" } # #cvn-sw (SWMT group 3; Heavy)
@@ -51,6 +50,7 @@ template-tasks:
       - { "name": "SWBot3", "pool": "cvn-app5" } # #cvn-simplewikis (Light)
 
       # Server: cvn-app6 (CPU: 4x, Memory: 8GB RAM)
-      # Load: 1 Medium
+      # Load: 1 Heavy, 1 Medium
       - { "name": "CVNBot2", "pool": "cvn-app6" } # #cvn-wp-ru (Medium)
+      - { "name": "CVNBot3", "pool": "cvn-app6" } # #cvn-wp-es (Heavy)
 
