@@ -23,9 +23,8 @@ template-tasks:
     "CVNBot":
       #
       # Server: cvn-app5 (CPU: 8x, Memory: 16GB RAM)
-      # Load: 1 Super Heavy, 2 Heavy, 4 Medium
+      # Load: 1 Super Heavy, 2 Heavy, 3 Medium
       #
-      - { "name": "Cubbie", "pool": "cvn-app5" } # #cvn-commons-uploads (Medium)
       - { "name": "CVNBot1", "pool": "cvn-app5" } # #cvn-wp-en (Heavy)
       - { "name": "CVNBot4", "pool": "cvn-app5" } # #cvn-it-scan (Medium)
       - { "name": "CVNBot5", "pool": "cvn-app5" } # #cvn-meta (Light)
@@ -38,7 +37,6 @@ template-tasks:
       - { "name": "CVNBot18", "pool": "cvn-app5" } # #cvn-wikidata (Super Heavy)
       - { "name": "CVNBot20", "pool": "cvn-app5" } # #cvn-bn-scan (Light)
       - { "name": "CVNBot22", "pool": "cvn-app5" } # #cvn-mk-scan (Light)
-      - { "name": "SWBot3", "pool": "cvn-app5" } # #cvn-simplewikis (Light)
       #
       # Server: cvn-app6 (CPU: 4x, Memory: 8GB RAM)
       # Load: 3 Heavy, 2 Medium
@@ -54,7 +52,9 @@ template-tasks:
       - { "name": "CVNBot23", "pool": "cvn-app6" } # #cvn-zh-scan (Light)
       #
       # Server: cvn-app7 (CPU: 4x, Memory: 8GB RAM)
-      # Load: Light
+      # Load: 1 Medium
       #
+      - { "name": "Cubbie", "pool": "cvn-app7" } # #cvn-commons-uploads (Medium)
       - { "name": "CVNBot21", "pool": "cvn-app7" } # #cvn-mediawiki (Light)
+      - { "name": "SWBot3", "pool": "cvn-app7" } # #cvn-simplewikis (Light)
 
