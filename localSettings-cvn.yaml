@@ -21,8 +21,10 @@ template-tasks:
     # - Medium: Over 1% CPU (or wiki has over 10 million edits)
     # - Light: Less than 1% CPU and wiki has under 10 million edits
     "CVNBot":
+      #
       # Server: cvn-app5 (CPU: 8x, Memory: 16GB RAM)
       # Load: 1 Super Heavy, 2 Heavy, 4 Medium
+      #
       - { "name": "Cubbie", "pool": "cvn-app5" } # #cvn-commons-uploads (Medium)
       - { "name": "CVNBot1", "pool": "cvn-app5" } # #cvn-wp-en (Heavy)
       - { "name": "CVNBot4", "pool": "cvn-app5" } # #cvn-it-scan (Medium)
@@ -35,12 +37,12 @@ template-tasks:
       - { "name": "CVNBot17", "pool": "cvn-app5" } # #cvn-wikivoyage (Light)
       - { "name": "CVNBot18", "pool": "cvn-app5" } # #cvn-wikidata (Super Heavy)
       - { "name": "CVNBot20", "pool": "cvn-app5" } # #cvn-bn-scan (Light)
-      - { "name": "CVNBot21", "pool": "cvn-app5" } # #cvn-mediawiki (Light)
       - { "name": "CVNBot22", "pool": "cvn-app5" } # #cvn-mk-scan (Light)
       - { "name": "SWBot3", "pool": "cvn-app5" } # #cvn-simplewikis (Light)
-
+      #
       # Server: cvn-app6 (CPU: 4x, Memory: 8GB RAM)
       # Load: 3 Heavy, 2 Medium
+      #
       - { "name": "CVNBot2", "pool": "cvn-app6" } # #cvn-wp-ru (Medium)
       - { "name": "CVNBot3", "pool": "cvn-app6" } # #cvn-wp-es (Heavy)
       - { "name": "CVNBot6", "pool": "cvn-app6" } # #cvn-sw (SWMT group 1; Heavy)
@@ -50,4 +52,9 @@ template-tasks:
       - { "name": "CVNBot10", "pool": "cvn-app6" } # #cvn-sw (SWMT group 5; Light)
       - { "name": "CVNBot19", "pool": "cvn-app6" } # #cvn-sw (SWMT group 6; Light)
       - { "name": "CVNBot23", "pool": "cvn-app6" } # #cvn-zh-scan (Light)
+      #
+      # Server: cvn-app7 (CPU: 4x, Memory: 8GB RAM)
+      # Load: Light
+      #
+      - { "name": "CVNBot21", "pool": "cvn-app7" } # #cvn-mediawiki (Light)
 
