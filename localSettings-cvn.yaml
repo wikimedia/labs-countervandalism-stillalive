@@ -23,10 +23,8 @@ template-tasks:
     "CVNBot":
       #
       # Server: cvn-app5 (CPU: 8x, Memory: 16GB RAM)
-      # Load: 1 Super Heavy, 1 Heavy, 1 Medium
+      # Load: 1 Super Heavy, 1 Medium
       #
-      # CVNBot14 is used by cvndb-pull which is linked to cvn-app5
-      - { "name": "CVNBot14", "pool": "cvn-app5" } # #cvn-commons (Heavy)
       - { "name": "CVNBot16", "pool": "cvn-app5" } # #cvn-ja (Medium)
       - { "name": "CVNBot17", "pool": "cvn-app5" } # #cvn-wikivoyage (Light)
       - { "name": "CVNBot18", "pool": "cvn-app5" } # #cvn-wikidata (Super Heavy)
@@ -47,7 +45,7 @@ template-tasks:
       - { "name": "CVNBot23", "pool": "cvn-app6" } # #cvn-zh-scan (Light)
       #
       # Server: cvn-app7 (CPU: 4x, Memory: 8GB RAM)
-      # Load: 1 Heavy, 3 Medium
+      # Load: 2 Heavy, 3 Medium
       #
       - { "name": "Cubbie", "pool": "cvn-app7" } # #cvn-commons-uploads (Medium)
       - { "name": "CVNBot1", "pool": "cvn-app7" } # #cvn-wp-en (Heavy)
@@ -55,6 +53,8 @@ template-tasks:
       - { "name": "CVNBot5", "pool": "cvn-app7" } # #cvn-meta (Light)
       - { "name": "CVNBot12", "pool": "cvn-app7" } # #cvn-wp-nl (Medium)
       - { "name": "CVNBot13", "pool": "cvn-app7" } # #cvn-wp-da (Light)
+      # Beware: CVNBot14 is linked to cvn-app7 for cvndb-publish.cron (see countervandalism/infrastructure.git:setup.yaml)
+      - { "name": "CVNBot14", "pool": "cvn-app7" } # #cvn-commons (Heavy)
       - { "name": "CVNBot21", "pool": "cvn-app7" } # #cvn-mediawiki (Light)
       - { "name": "SWBot3", "pool": "cvn-app7" } # #cvn-simplewikis (Light)
 
