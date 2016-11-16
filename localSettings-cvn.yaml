@@ -23,14 +23,12 @@ template-tasks:
     "CVNBot":
       #
       # Server: cvn-app5 (CPU: 8x, Memory: 16GB RAM)
-      # Load: 1 Super Heavy, 1 Medium
+      # Load: Light
       #
-      - { "name": "CVNBot16", "pool": "cvn-app5" } # #cvn-ja (Medium)
       - { "name": "CVNBot17", "pool": "cvn-app5" } # #cvn-wikivoyage (Light)
-      - { "name": "CVNBot18", "pool": "cvn-app5" } # #cvn-wikidata (Super Heavy)
       #
       # Server: cvn-app6 (CPU: 4x, Memory: 8GB RAM)
-      # Load: 3 Heavy, 2 Medium
+      # Load: 3 Heavy, 3 Medium
       #
       - { "name": "CVNBot2", "pool": "cvn-app6" } # #cvn-wp-ru (Medium)
       - { "name": "CVNBot3", "pool": "cvn-app6" } # #cvn-wp-es (Heavy)
@@ -39,13 +37,14 @@ template-tasks:
       - { "name": "CVNBot8", "pool": "cvn-app6" } # #cvn-sw (SWMT group 3; Heavy)
       - { "name": "CVNBot9", "pool": "cvn-app6" } # #cvn-sw (SWMT group 4; Light)
       - { "name": "CVNBot10", "pool": "cvn-app6" } # #cvn-sw (SWMT group 5; Light)
+      - { "name": "CVNBot16", "pool": "cvn-app6" } # #cvn-ja (Medium)
       - { "name": "CVNBot19", "pool": "cvn-app6" } # #cvn-sw (SWMT group 6; Light)
       - { "name": "CVNBot20", "pool": "cvn-app6" } # #cvn-bn-scan (Light)
       - { "name": "CVNBot22", "pool": "cvn-app6" } # #cvn-mk-scan (Light)
       - { "name": "CVNBot23", "pool": "cvn-app6" } # #cvn-zh-scan (Light)
       #
       # Server: cvn-app7 (CPU: 4x, Memory: 8GB RAM)
-      # Load: 2 Heavy, 3 Medium
+      # Load: 1 Super Heavy, 2 Heavy, 3 Medium
       #
       - { "name": "Cubbie", "pool": "cvn-app7" } # #cvn-commons-uploads (Medium)
       - { "name": "CVNBot1", "pool": "cvn-app7" } # #cvn-wp-en (Heavy)
@@ -55,6 +54,7 @@ template-tasks:
       - { "name": "CVNBot13", "pool": "cvn-app7" } # #cvn-wp-da (Light)
       # Beware: CVNBot14 is linked to cvn-app7 for cvndb-publish.cron (see countervandalism/infrastructure.git:setup.yaml)
       - { "name": "CVNBot14", "pool": "cvn-app7" } # #cvn-commons (Heavy)
+      - { "name": "CVNBot18", "pool": "cvn-app7" } # #cvn-wikidata (Super Heavy)
       - { "name": "CVNBot21", "pool": "cvn-app7" } # #cvn-mediawiki (Light)
       - { "name": "SWBot3", "pool": "cvn-app7" } # #cvn-simplewikis (Light)
 
