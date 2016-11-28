@@ -6,7 +6,7 @@ tasks:
   -
     cmd: "{cvn}/services/CVNClerkBot/init.sh > {cvn}/log/cvnclerkbot.log 2>&1"
     match: "python {cvn}/git/CVNClerkBot/cvnclerkbot.py"
-    pool: "cvn-app5"
+    pool: "cvn-app6"
     user: false
 templates:
   CVNBot:
