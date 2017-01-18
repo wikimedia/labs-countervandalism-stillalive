@@ -38,6 +38,7 @@ template-tasks:
       - { "name": "CVNBot20", "pool": "cvn-app6" } # #cvn-bn-scan (Light)
       - { "name": "CVNBot22", "pool": "cvn-app6" } # #cvn-mk-scan (Light)
       - { "name": "CVNBot23", "pool": "cvn-app6" } # #cvn-zh-scan (Light)
+      - { "name": "CVNBot24", "pool": "cvn-app6" } # #cvn-wp-he (Light)
       #
       # Server: cvn-app7 (CPU: 4x, Memory: 8GB RAM)
       # Load: 1 Super Heavy, 2 Heavy, 3 Medium
