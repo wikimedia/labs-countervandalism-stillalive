@@ -9,9 +9,13 @@ tasks:
     pool: "cvn-app6"
     user: false
 templates:
-  CVNBot:
+  CVNBot_v1_21:
     cwd: "{cvn}/services/cvnbot/{name}"
     cmd: "mono {cvn}/services/cvnbot/{name}/CVNBot.exe > {cvn}/log/{name}.log 2>&1"
+    match: "mono {cvn}/services/cvnbot/{name}/CVNBot.exe"
+  CVNBot_v1_22:
+    cwd: "{cvn}/services/cvnbot/{name}"
+    cmd: "mono {cvn}/services/cvnbot/{name}/CVNBot.exe > /dev/null 2>&1"
     match: "mono {cvn}/services/cvnbot/{name}/CVNBot.exe"
 template-tasks:
     # https://meta.wikimedia.org/wiki/Countervandalism_Network/Bots
@@ -20,7 +24,7 @@ template-tasks:
     # - Heavy: Between 10-25% CPU (or wiki has over 100 million edits)
     # - Medium: Over 1% CPU (or wiki has over 10 million edits)
     # - Light: Less than 1% CPU and wiki has under 10 million edits
-    "CVNBot":
+    "CVNBot_v1_21":
       #
       # Server: cvn-app6 (CPU: 4x, Memory: 8GB RAM)
       # Load: 3 Heavy, 3 Medium
@@ -41,17 +45,22 @@ template-tasks:
       - { "name": "CVNBot24", "pool": "cvn-app6" } # #cvn-wp-he (Light)
       #
       # Server: cvn-app7 (CPU: 4x, Memory: 8GB RAM)
-      # Load: 1 Super Heavy, 2 Heavy, 3 Medium
+      # Load: 1 Super Heavy, 2 Heavy, 2 Medium
       #
       - { "name": "Cubbie", "pool": "cvn-app7" } # #cvn-commons-uploads (Medium)
       - { "name": "CVNBot1", "pool": "cvn-app7" } # #cvn-wp-en (Heavy)
       - { "name": "CVNBot4", "pool": "cvn-app7" } # #cvn-it-scan (Medium)
       - { "name": "CVNBot5", "pool": "cvn-app7" } # #cvn-meta (Light)
-      - { "name": "CVNBot12", "pool": "cvn-app7" } # #cvn-wp-nl (Medium)
       - { "name": "CVNBot13", "pool": "cvn-app7" } # #cvn-wp-da (Light)
       # Beware: CVNBot14 is linked to cvn-app7 for cvndb-publish.cron (see countervandalism/infrastructure.git:setup.yaml)
       - { "name": "CVNBot14", "pool": "cvn-app7" } # #cvn-commons (Heavy)
       - { "name": "CVNBot18", "pool": "cvn-app7" } # #cvn-wikidata (Super Heavy)
       - { "name": "CVNBot21", "pool": "cvn-app7" } # #cvn-mediawiki (Light)
       - { "name": "SWBot3", "pool": "cvn-app7" } # #cvn-simplewikis (Light)
+    "CVNBot_v1_22":
+      #
+      # Server: cvn-app8 (CPU: 4x, Memory: 8GB RAM)
+      # Load: 1 Medium
+      #
+      # - { "name": "CVNBot12", "pool": "cvn-app7" } # #cvn-wp-nl (Medium)
 
