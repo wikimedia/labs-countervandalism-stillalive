@@ -59,7 +59,7 @@ template-tasks:
       # Server: cvn-app8 (CPU: 4x, Memory: 8GB RAM)
       # Load: 1 Super Heavy, 1 Heavy, 2 Medium
       #
-      #- { "name": "Cubbie", "pool": "cvn-app8" } # #cvn-commons-uploads (Medium)
+      - { "name": "Cubbie", "pool": "cvn-app8" } # #cvn-commons-uploads (Medium)
       - { "name": "CVNBot1", "pool": "cvn-app8" } # #cvn-wp-en (Heavy)
       - { "name": "CVNBot12", "pool": "cvn-app8" } # #cvn-wp-nl (Medium)
       - { "name": "CVNBot18", "pool": "cvn-app8" } # #cvn-wikidata (Super Heavy)
