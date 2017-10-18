@@ -61,6 +61,6 @@ template-tasks:
       - { "name": "CVNBot4", "pool": "cvn-app8" } # #cvn-it-scan (Medium)
       - { "name": "CVNBot5", "pool": "cvn-app8" } # #cvn-meta (Light)
       - { "name": "CVNBot12", "pool": "cvn-app8" } # #cvn-wp-nl (Medium)
-      #- { "name": "CVNBot13", "pool": "cvn-app8" } # #cvn-wp-da (Light)
+      - { "name": "CVNBot13", "pool": "cvn-app8" } # #cvn-wp-da (Light)
       - { "name": "CVNBot18", "pool": "cvn-app8" } # #cvn-wikidata (Super Heavy)
 
