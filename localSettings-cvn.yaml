@@ -57,7 +57,7 @@ template-tasks:
       #
       - { "name": "Cubbie", "pool": "cvn-app8" } # #cvn-commons-uploads (Medium)
       - { "name": "CVNBot1", "pool": "cvn-app8" } # #cvn-wp-en (Heavy)
-      #- { "name": "CVNBot2", "pool": "cvn-app8" } # #cvn-wp-ru (Medium)
+      - { "name": "CVNBot2", "pool": "cvn-app8" } # #cvn-wp-ru (Medium)
       - { "name": "CVNBot4", "pool": "cvn-app8" } # #cvn-it-scan (Medium)
       - { "name": "CVNBot5", "pool": "cvn-app8" } # #cvn-meta (Light)
       - { "name": "CVNBot12", "pool": "cvn-app8" } # #cvn-wp-nl (Medium)
