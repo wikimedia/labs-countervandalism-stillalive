@@ -27,9 +27,8 @@ template-tasks:
     "CVNBot_v1_21":
       #
       # Server: cvn-app6 (CPU: 4x, Memory: 8GB RAM)
-      # Load: 3 Heavy, 3 Medium
+      # Load: 3 Heavy, 2 Medium
       #
-      - { "name": "CVNBot2", "pool": "cvn-app6" } # #cvn-wp-ru (Medium)
       - { "name": "CVNBot3", "pool": "cvn-app6" } # #cvn-wp-es (Heavy)
       - { "name": "CVNBot6", "pool": "cvn-app6" } # #cvn-sw (SWMT group 1; Heavy)
       - { "name": "CVNBot7", "pool": "cvn-app6" } # #cvn-sw (SWMT group 2; Medium)
@@ -54,10 +53,11 @@ template-tasks:
     "CVNBot_v1_22":
       #
       # Server: cvn-app8 (CPU: 4x, Memory: 8GB RAM)
-      # Load: 1 Super Heavy, 1 Heavy, 3 Medium
+      # Load: 1 Super Heavy, 1 Heavy, 4 Medium
       #
       - { "name": "Cubbie", "pool": "cvn-app8" } # #cvn-commons-uploads (Medium)
       - { "name": "CVNBot1", "pool": "cvn-app8" } # #cvn-wp-en (Heavy)
+      #- { "name": "CVNBot2", "pool": "cvn-app8" } # #cvn-wp-ru (Medium)
       - { "name": "CVNBot4", "pool": "cvn-app8" } # #cvn-it-scan (Medium)
       - { "name": "CVNBot5", "pool": "cvn-app8" } # #cvn-meta (Light)
       - { "name": "CVNBot12", "pool": "cvn-app8" } # #cvn-wp-nl (Medium)
