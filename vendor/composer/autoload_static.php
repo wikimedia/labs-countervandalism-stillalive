@@ -10,6 +10,11 @@ class ComposerStaticInit9b65dea655d2ae3c3b1dc488948ae60c
         'S' => 
         array (
             'Symfony\\Component\\Yaml\\' => 23,
+            'StillAlive\\' => 11,
+        ),
+        'G' => 
+        array (
+            'GetOpt\\' => 7,
         ),
     );
 
@@ -18,9 +23,35 @@ class ComposerStaticInit9b65dea655d2ae3c3b1dc488948ae60c
         array (
             0 => __DIR__ . '/..' . '/symfony/yaml',
         ),
+        'StillAlive\\' => 
+        array (
+            0 => __DIR__ . '/../..' . '/src',
+        ),
+        'GetOpt\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/ulrichsg/getopt-php/src',
+        ),
     );
 
     public static $classMap = array (
+        'GetOpt\\Argument' => __DIR__ . '/..' . '/ulrichsg/getopt-php/src/Argument.php',
+        'GetOpt\\ArgumentException' => __DIR__ . '/..' . '/ulrichsg/getopt-php/src/ArgumentException.php',
+        'GetOpt\\ArgumentException\\Invalid' => __DIR__ . '/..' . '/ulrichsg/getopt-php/src/ArgumentException/Invalid.php',
+        'GetOpt\\ArgumentException\\Missing' => __DIR__ . '/..' . '/ulrichsg/getopt-php/src/ArgumentException/Missing.php',
+        'GetOpt\\ArgumentException\\Unexpected' => __DIR__ . '/..' . '/ulrichsg/getopt-php/src/ArgumentException/Unexpected.php',
+        'GetOpt\\Arguments' => __DIR__ . '/..' . '/ulrichsg/getopt-php/src/Arguments.php',
+        'GetOpt\\Command' => __DIR__ . '/..' . '/ulrichsg/getopt-php/src/Command.php',
+        'GetOpt\\GetOpt' => __DIR__ . '/..' . '/ulrichsg/getopt-php/src/GetOpt.php',
+        'GetOpt\\Help' => __DIR__ . '/..' . '/ulrichsg/getopt-php/src/Help.php',
+        'GetOpt\\HelpInterface' => __DIR__ . '/..' . '/ulrichsg/getopt-php/src/HelpInterface.php',
+        'GetOpt\\Operand' => __DIR__ . '/..' . '/ulrichsg/getopt-php/src/Operand.php',
+        'GetOpt\\Option' => __DIR__ . '/..' . '/ulrichsg/getopt-php/src/Option.php',
+        'GetOpt\\OptionParser' => __DIR__ . '/..' . '/ulrichsg/getopt-php/src/OptionParser.php',
+        'GetOpt\\WithOperands' => __DIR__ . '/..' . '/ulrichsg/getopt-php/src/WithOperands.php',
+        'GetOpt\\WithOptions' => __DIR__ . '/..' . '/ulrichsg/getopt-php/src/WithOptions.php',
+        'StillAlive\\Main' => __DIR__ . '/../..' . '/src/StillAlive.php',
+        'StillAlive\\Util' => __DIR__ . '/../..' . '/src/Util.php',
+        'Symfony\\Component\\Yaml\\Command\\LintCommand' => __DIR__ . '/..' . '/symfony/yaml/Command/LintCommand.php',
         'Symfony\\Component\\Yaml\\Dumper' => __DIR__ . '/..' . '/symfony/yaml/Dumper.php',
         'Symfony\\Component\\Yaml\\Escaper' => __DIR__ . '/..' . '/symfony/yaml/Escaper.php',
         'Symfony\\Component\\Yaml\\Exception\\DumpException' => __DIR__ . '/..' . '/symfony/yaml/Exception/DumpException.php',
@@ -29,6 +60,7 @@ class ComposerStaticInit9b65dea655d2ae3c3b1dc488948ae60c
         'Symfony\\Component\\Yaml\\Exception\\RuntimeException' => __DIR__ . '/..' . '/symfony/yaml/Exception/RuntimeException.php',
         'Symfony\\Component\\Yaml\\Inline' => __DIR__ . '/..' . '/symfony/yaml/Inline.php',
         'Symfony\\Component\\Yaml\\Parser' => __DIR__ . '/..' . '/symfony/yaml/Parser.php',
+        'Symfony\\Component\\Yaml\\Tag\\TaggedValue' => __DIR__ . '/..' . '/symfony/yaml/Tag/TaggedValue.php',
         'Symfony\\Component\\Yaml\\Unescaper' => __DIR__ . '/..' . '/symfony/yaml/Unescaper.php',
         'Symfony\\Component\\Yaml\\Yaml' => __DIR__ . '/..' . '/symfony/yaml/Yaml.php',
     );

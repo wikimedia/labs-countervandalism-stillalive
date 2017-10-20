@@ -1,8 +1,10 @@
 <?php
 
-require_once dirname( __DIR__ ) . '/Util.php';
+namespace StillAlive\Test;
 
-class SettingsTest extends PHPUnit_Framework_TestCase {
+use StillAlive\Util;
+
+class SettingsTest extends \PHPUnit_Framework_TestCase {
 	public function testCvnSettings() {
 		$localSettings = Util::loadConfig( dirname( __DIR__ ) . '/localSettings-cvn.yaml' );
 

@@ -6,6 +6,24 @@ $vendorDir = dirname(dirname(__FILE__));
 $baseDir = dirname($vendorDir);
 
 return array(
+    'GetOpt\\Argument' => $vendorDir . '/ulrichsg/getopt-php/src/Argument.php',
+    'GetOpt\\ArgumentException' => $vendorDir . '/ulrichsg/getopt-php/src/ArgumentException.php',
+    'GetOpt\\ArgumentException\\Invalid' => $vendorDir . '/ulrichsg/getopt-php/src/ArgumentException/Invalid.php',
+    'GetOpt\\ArgumentException\\Missing' => $vendorDir . '/ulrichsg/getopt-php/src/ArgumentException/Missing.php',
+    'GetOpt\\ArgumentException\\Unexpected' => $vendorDir . '/ulrichsg/getopt-php/src/ArgumentException/Unexpected.php',
+    'GetOpt\\Arguments' => $vendorDir . '/ulrichsg/getopt-php/src/Arguments.php',
+    'GetOpt\\Command' => $vendorDir . '/ulrichsg/getopt-php/src/Command.php',
+    'GetOpt\\GetOpt' => $vendorDir . '/ulrichsg/getopt-php/src/GetOpt.php',
+    'GetOpt\\Help' => $vendorDir . '/ulrichsg/getopt-php/src/Help.php',
+    'GetOpt\\HelpInterface' => $vendorDir . '/ulrichsg/getopt-php/src/HelpInterface.php',
+    'GetOpt\\Operand' => $vendorDir . '/ulrichsg/getopt-php/src/Operand.php',
+    'GetOpt\\Option' => $vendorDir . '/ulrichsg/getopt-php/src/Option.php',
+    'GetOpt\\OptionParser' => $vendorDir . '/ulrichsg/getopt-php/src/OptionParser.php',
+    'GetOpt\\WithOperands' => $vendorDir . '/ulrichsg/getopt-php/src/WithOperands.php',
+    'GetOpt\\WithOptions' => $vendorDir . '/ulrichsg/getopt-php/src/WithOptions.php',
+    'StillAlive\\Main' => $baseDir . '/src/StillAlive.php',
+    'StillAlive\\Util' => $baseDir . '/src/Util.php',
+    'Symfony\\Component\\Yaml\\Command\\LintCommand' => $vendorDir . '/symfony/yaml/Command/LintCommand.php',
     'Symfony\\Component\\Yaml\\Dumper' => $vendorDir . '/symfony/yaml/Dumper.php',
     'Symfony\\Component\\Yaml\\Escaper' => $vendorDir . '/symfony/yaml/Escaper.php',
     'Symfony\\Component\\Yaml\\Exception\\DumpException' => $vendorDir . '/symfony/yaml/Exception/DumpException.php',
@@ -14,6 +32,7 @@ return array(
     'Symfony\\Component\\Yaml\\Exception\\RuntimeException' => $vendorDir . '/symfony/yaml/Exception/RuntimeException.php',
     'Symfony\\Component\\Yaml\\Inline' => $vendorDir . '/symfony/yaml/Inline.php',
     'Symfony\\Component\\Yaml\\Parser' => $vendorDir . '/symfony/yaml/Parser.php',
+    'Symfony\\Component\\Yaml\\Tag\\TaggedValue' => $vendorDir . '/symfony/yaml/Tag/TaggedValue.php',
     'Symfony\\Component\\Yaml\\Unescaper' => $vendorDir . '/symfony/yaml/Unescaper.php',
     'Symfony\\Component\\Yaml\\Yaml' => $vendorDir . '/symfony/yaml/Yaml.php',
 );

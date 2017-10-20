@@ -7,4 +7,6 @@ $baseDir = dirname($vendorDir);
 
 return array(
     'Symfony\\Component\\Yaml\\' => array($vendorDir . '/symfony/yaml'),
+    'StillAlive\\' => array($baseDir . '/src'),
+    'GetOpt\\' => array($vendorDir . '/ulrichsg/getopt-php/src'),
 );

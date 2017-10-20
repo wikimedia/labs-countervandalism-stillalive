@@ -6,6 +6,8 @@
  * @package stillalive
  */
 
+namespace StillAlive;
+
 use Symfony\Component\Yaml\Yaml;
 use Symfony\Component\Yaml\Exception\ParseException;
 
@@ -13,7 +15,7 @@ class Util {
 	private static $rPropStringTpl = '/\{\s*([a-zA-Z0-9_\-$]+)\s*\}/';
 
 	/**
-	 * @return boolean|array
+	 * @return bool|array
 	 * @throws ParseException
 	 */
 	public static function loadConfig( $filename ) {
@@ -29,7 +31,7 @@ class Util {
 	}
 
 	/**
-	 * From http://stackoverflow.com/a/19136663/319266
+	 * From https://stackoverflow.com/a/19136663/319266
 	 * @param string $str
 	 */
 	public static function stripComments( $str = '' ) {
@@ -41,9 +43,9 @@ class Util {
 	/**
 	 * Replace parameter placeholders in a string.
 	 *
-	 * @param string|Object &$x String to be processed, or object
+	 * @param string|array &$x String to be processed, or object
 	 *  to recursively walk to find these strings.
-	 * @param Object &$parameters
+	 * @param array &$parameters
 	 * @return string
 	 */
 	public static function placeholder( &$x, &$parameters = array() ) {
