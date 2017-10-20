@@ -61,6 +61,6 @@ template-tasks:
       - { "name": "CVNBot12", "pool": "cvn-app8" } # #cvn-wp-nl (Medium)
       - { "name": "CVNBot13", "pool": "cvn-app8" } # #cvn-wp-da (Light)
       - { "name": "CVNBot18", "pool": "cvn-app8" } # #cvn-wikidata (Super Heavy)
-      #- { "name": "CVNBot21", "pool": "cvn-app8" } # #cvn-mediawiki (Light)
-      #- { "name": "SWBot3", "pool": "cvn-app8" } # #cvn-simplewikis (Light)
+      - { "name": "CVNBot21", "pool": "cvn-app8" } # #cvn-mediawiki (Light)
+      - { "name": "SWBot3", "pool": "cvn-app8" } # #cvn-simplewikis (Light)
 
