@@ -27,14 +27,13 @@ template-tasks:
     "CVNBot_v1_21":
       #
       # Server: cvn-app6 (CPU: 4x, Memory: 8GB RAM)
-      # Load: 2 Heavy, 2 Medium
+      # Load: 2 Heavy, 1 Medium
       #
       - { "name": "CVNBot6", "pool": "cvn-app6" } # #cvn-sw (SWMT group 1; Heavy)
       - { "name": "CVNBot7", "pool": "cvn-app6" } # #cvn-sw (SWMT group 2; Medium)
       - { "name": "CVNBot8", "pool": "cvn-app6" } # #cvn-sw (SWMT group 3; Heavy)
       - { "name": "CVNBot9", "pool": "cvn-app6" } # #cvn-sw (SWMT group 4; Light)
       - { "name": "CVNBot10", "pool": "cvn-app6" } # #cvn-sw (SWMT group 5; Light)
-      - { "name": "CVNBot16", "pool": "cvn-app6" } # #cvn-ja (Medium)
       - { "name": "CVNBot17", "pool": "cvn-app6" } # #cvn-wikivoyage (Light)
       - { "name": "CVNBot19", "pool": "cvn-app6" } # #cvn-sw (SWMT group 6; Light)
       - { "name": "CVNBot22", "pool": "cvn-app6" } # #cvn-mk-scan (Light)
@@ -62,4 +61,5 @@ template-tasks:
       #
       # Server: cvn-app9 (CPU: 4x, Memory: 8GB RAM)
       #
+      - { "name": "CVNBot16", "pool": "cvn-app9" } # #cvn-ja (Medium)
 
