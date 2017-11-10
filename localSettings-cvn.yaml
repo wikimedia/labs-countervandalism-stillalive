@@ -34,11 +34,6 @@ template-tasks:
       - { "name": "CVNBot8", "pool": "cvn-app6" } # #cvn-sw (SWMT group 3; Heavy)
       - { "name": "CVNBot9", "pool": "cvn-app6" } # #cvn-sw (SWMT group 4; Light)
       - { "name": "CVNBot10", "pool": "cvn-app6" } # #cvn-sw (SWMT group 5; Light)
-      - { "name": "CVNBot17", "pool": "cvn-app6" } # #cvn-wikivoyage (Light)
-      - { "name": "CVNBot19", "pool": "cvn-app6" } # #cvn-sw (SWMT group 6; Light)
-      - { "name": "CVNBot22", "pool": "cvn-app6" } # #cvn-mk-scan (Light)
-      - { "name": "CVNBot23", "pool": "cvn-app6" } # #cvn-zh-scan (Light)
-      - { "name": "CVNBot24", "pool": "cvn-app6" } # #cvn-wp-he (Light)
     "CVNBot_v1_22":
       #
       # Server: cvn-app8 (CPU: 4x, Memory: 8GB RAM)
@@ -62,4 +57,9 @@ template-tasks:
       # Server: cvn-app9 (CPU: 4x, Memory: 8GB RAM)
       #
       - { "name": "CVNBot16", "pool": "cvn-app9" } # #cvn-ja (Medium)
+      - { "name": "CVNBot17", "pool": "cvn-app9" } # #cvn-wikivoyage (Light)
+      - { "name": "CVNBot19", "pool": "cvn-app9" } # #cvn-sw (SWMT group 6; Light)
+      - { "name": "CVNBot22", "pool": "cvn-app9" } # #cvn-mk-scan (Light)
+      - { "name": "CVNBot23", "pool": "cvn-app9" } # #cvn-zh-scan (Light)
+      - { "name": "CVNBot24", "pool": "cvn-app9" } # #cvn-wp-he (Light)
 
