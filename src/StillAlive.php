@@ -99,10 +99,19 @@ class Main {
 		}
 
 		// Validate top-level required fields
-		foreach ( array( 'tasks', 'cwd' ) as $key ) {
+		foreach ( array( 'cwd' ) as $key ) {
 			if ( !isset( $config[$key] ) ) {
 				throw new DomainException( "Config is missing key '{$key}'" );
 			}
+		}
+
+		if ( !isset( $config['tasks'] ) && !isset( $config['template-tasks'] ) ) {
+			throw new DomainException( "Config must have at least one of 'tasks' or 'template-tasks'" );
+		}
+
+		// Expand top-level optional fields
+		if ( !isset( $config['tasks'] ) ) {
+			$config['tasks'] = [];
 		}
 
 		// Expand top-level optional fields

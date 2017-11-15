@@ -249,11 +249,11 @@ Options:
 		return array(
 			'empty' => array(
 				'config' => array(),
-				'error' => "missing key 'tasks'",
-			),
-			'no cwd' => array(
-				'config' => array( 'tasks' => array() ),
 				'error' => "missing key 'cwd'",
+			),
+			'no tasks' => array(
+				'config' => array( 'cwd' => '/tmp' ),
+				'error' => "must have at least one of 'tasks' or 'template-tasks'",
 			),
 			'unused template' => array(
 				'config' => array(
