@@ -4,15 +4,11 @@ cwd: "/tmp"
 user: "cvn.cvnservice"
 tasks:
   -
-    cmd: "{cvn}/services/CVNClerkBot/init.sh > {cvn}/log/cvnclerkbot.log 2>&1"
+    cmd: "python {cvn}/git/CVNClerkBot/cvnclerkbot.py > {cvn}/log/cvnclerkbot.log 2>&1"
     match: "python {cvn}/git/CVNClerkBot/cvnclerkbot.py"
-    pool: "cvn-app6"
+    pool: "cvn-app9"
     user: false
 templates:
-  CVNBot_v1_21:
-    cwd: "{cvn}/services/cvnbot/{name}"
-    cmd: "mono {cvn}/services/cvnbot/{name}/CVNBot.exe > {cvn}/log/{name}.log 2>&1"
-    match: "mono {cvn}/services/cvnbot/{name}/CVNBot.exe"
   CVNBot_v1_22:
     cwd: "{cvn}/services/cvnbot/{name}"
     cmd: "mono {cvn}/services/cvnbot/{name}/CVNBot.exe > /dev/null 2>&1"
