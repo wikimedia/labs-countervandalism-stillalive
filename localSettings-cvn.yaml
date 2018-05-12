@@ -60,4 +60,4 @@ template-tasks:
       - { "name": "CVNBot23" } # #cvn-zh-scan (Light)
       - { "name": "CVNBot24" } # #cvn-wp-he (Light)
       - { "name": "CVNBot25" } # #cvn-ko-scan (Medium)
-
+      - { "name": "CVNBot26" } # #cvn-ar-scan (Medium)
