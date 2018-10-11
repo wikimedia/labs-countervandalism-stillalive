@@ -61,3 +61,4 @@ template-tasks:
       - { "name": "CVNBot24" } # #cvn-wp-he (Light)
       - { "name": "CVNBot25" } # #cvn-ko-scan (Medium)
       - { "name": "CVNBot26" } # #cvn-ar-scan (Medium)
+      - { "name": "CVNBot27" } # #cvn-wp-hr (Light)
