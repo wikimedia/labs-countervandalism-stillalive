@@ -1,4 +1,4 @@
-[![Build Status](https://travis-ci.org/countervandalism/stillalive.svg?branch=master)](https://travis-ci.org/countervandalism/stillalive)
+[![Build Status](https://travis-ci.com/countervandalism/stillalive.svg?branch=master)](https://travis-ci.com/countervandalism/stillalive)
 
 # stillalive
 
