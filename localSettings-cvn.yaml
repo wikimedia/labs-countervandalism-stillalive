@@ -38,7 +38,7 @@ template-tasks:
       - { "name": "CVNBot18" } # #cvn-wikidata (Super Heavy)
       - { "name": "CVNBot20" } # #cvn-bn-scan (Light)
       - { "name": "CVNBot21" } # #cvn-mediawiki (Light)
-      - { "name": "SWBot3" } # #cvn-simplewikis (Light)
+      - { "name": "CVNBot15" } # #cvn-simplewikis (Light)
     #
     # Server: cvn-app9 (CPU: 4x, Memory: 8GB RAM)
     #
