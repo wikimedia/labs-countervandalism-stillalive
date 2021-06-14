@@ -1,4 +1,4 @@
-[![Build Status](https://travis-ci.com/countervandalism/stillalive.svg?branch=master)](https://travis-ci.com/countervandalism/stillalive)
+[![Build Status](https://github.com/countervandalism/stillalive/actions/workflows/CI.yaml/badge.svg)](https://github.com/countervandalism/stillalive/actions/workflows/CI.yaml)
 
 # stillalive
 
