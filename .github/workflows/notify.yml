@@ -3,7 +3,6 @@ name: notify
 on:
   push:
     branches:
-      - master
       - main
 
 jobs:
