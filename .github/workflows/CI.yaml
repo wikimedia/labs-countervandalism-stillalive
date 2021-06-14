@@ -8,6 +8,7 @@ jobs:
 
   php:
     strategy:
+      fail-fast: false
       matrix:
         include:
           # Has php5.6-8.0 and composer 2 pre-installed
@@ -24,8 +25,6 @@ jobs:
           # https://github.com/actions/virtual-environments/blob/ubuntu20/20210531.0/images/linux/Ubuntu2004-README.md
           - os: ubuntu-20.04
             php: "7.4"
-          - os: ubuntu-20.04
-            php: "8.0"
     # Use "PHP 0.0" as job name instead of "php (ubuntu-, 0.0)"
     name: PHP ${{ matrix.php }}
     runs-on: ${{ matrix.os }}
@@ -40,3 +39,5 @@ jobs:
 
       - name: composer test
         run: composer test
+        env:
+          XDEBUG_MODE: coverage
