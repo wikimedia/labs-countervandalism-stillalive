@@ -6,6 +6,7 @@ $vendorDir = dirname(dirname(__FILE__));
 $baseDir = dirname($vendorDir);
 
 return array(
+    'Composer\\InstalledVersions' => $vendorDir . '/composer/InstalledVersions.php',
     'GetOpt\\Argument' => $vendorDir . '/ulrichsg/getopt-php/src/Argument.php',
     'GetOpt\\ArgumentException' => $vendorDir . '/ulrichsg/getopt-php/src/ArgumentException.php',
     'GetOpt\\ArgumentException\\Invalid' => $vendorDir . '/ulrichsg/getopt-php/src/ArgumentException/Invalid.php',
@@ -21,7 +22,7 @@ return array(
     'GetOpt\\OptionParser' => $vendorDir . '/ulrichsg/getopt-php/src/OptionParser.php',
     'GetOpt\\WithOperands' => $vendorDir . '/ulrichsg/getopt-php/src/WithOperands.php',
     'GetOpt\\WithOptions' => $vendorDir . '/ulrichsg/getopt-php/src/WithOptions.php',
-    'StillAlive\\Main' => $baseDir . '/src/StillAlive.php',
+    'StillAlive\\Main' => $baseDir . '/src/Main.php',
     'StillAlive\\Util' => $baseDir . '/src/Util.php',
     'Symfony\\Component\\Yaml\\Command\\LintCommand' => $vendorDir . '/symfony/yaml/Command/LintCommand.php',
     'Symfony\\Component\\Yaml\\Dumper' => $vendorDir . '/symfony/yaml/Dumper.php',

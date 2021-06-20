@@ -34,6 +34,7 @@ class ComposerStaticInit9b65dea655d2ae3c3b1dc488948ae60c
     );
 
     public static $classMap = array (
+        'Composer\\InstalledVersions' => __DIR__ . '/..' . '/composer/InstalledVersions.php',
         'GetOpt\\Argument' => __DIR__ . '/..' . '/ulrichsg/getopt-php/src/Argument.php',
         'GetOpt\\ArgumentException' => __DIR__ . '/..' . '/ulrichsg/getopt-php/src/ArgumentException.php',
         'GetOpt\\ArgumentException\\Invalid' => __DIR__ . '/..' . '/ulrichsg/getopt-php/src/ArgumentException/Invalid.php',
@@ -49,7 +50,7 @@ class ComposerStaticInit9b65dea655d2ae3c3b1dc488948ae60c
         'GetOpt\\OptionParser' => __DIR__ . '/..' . '/ulrichsg/getopt-php/src/OptionParser.php',
         'GetOpt\\WithOperands' => __DIR__ . '/..' . '/ulrichsg/getopt-php/src/WithOperands.php',
         'GetOpt\\WithOptions' => __DIR__ . '/..' . '/ulrichsg/getopt-php/src/WithOptions.php',
-        'StillAlive\\Main' => __DIR__ . '/../..' . '/src/StillAlive.php',
+        'StillAlive\\Main' => __DIR__ . '/../..' . '/src/Main.php',
         'StillAlive\\Util' => __DIR__ . '/../..' . '/src/Util.php',
         'Symfony\\Component\\Yaml\\Command\\LintCommand' => __DIR__ . '/..' . '/symfony/yaml/Command/LintCommand.php',
         'Symfony\\Component\\Yaml\\Dumper' => __DIR__ . '/..' . '/symfony/yaml/Dumper.php',
