@@ -3,12 +3,12 @@ parameters:
 cwd: "/tmp"
 user: "cvn.cvnservice"
 templates:
-  CVNBot_v3@cvn-app8:
+  CVNBot_v4@cvn-app8:
     cwd: "{cvn}/services/cvnbot/{name}"
     cmd: "mono {cvn}/services/cvnbot/{name}/CVNBot.exe > /dev/null 2>&1"
     match: "mono {cvn}/services/cvnbot/{name}/CVNBot.exe"
     pool: "cvn-app8"
-  CVNBot_v3@cvn-app9:
+  CVNBot_v4@cvn-app9:
     cwd: "{cvn}/services/cvnbot/{name}"
     cmd: "mono {cvn}/services/cvnbot/{name}/CVNBot.exe > /dev/null 2>&1"
     match: "mono {cvn}/services/cvnbot/{name}/CVNBot.exe"
@@ -24,21 +24,21 @@ template-tasks:
     # Server: cvn-app8 (CPU: 4x, Memory: 8GB RAM)
     # Load: 1 Super Heavy, 2 Heavy, 4 Medium
     #
-    "CVNBot_v3@cvn-app8":
-      - { "name": "Cubbie" } # #cvn-commons-uploads (Medium)
+    "CVNBot_v4@cvn-app8":
       - { "name": "CVNBot1" } # #cvn-wp-en (Heavy)
       - { "name": "CVNBot2" } # #cvn-wp-ru (Medium)
       - { "name": "CVNBot3" } # #cvn-wp-es (Heavy)
       - { "name": "CVNBot4" } # #cvn-it-scan (Medium)
       - { "name": "CVNBot5" } # #cvn-meta (Light)
+      - { "name": "CVNBot11" } # #cvn-commons-uploads (Medium)
       - { "name": "CVNBot12" } # #cvn-wp-nl (Medium)
       - { "name": "CVNBot13" } # #cvn-wp-da (Light)
       # Beware: CVNBot14 is pinned to cvn-app8 for cvndb-publish.cron (see countervandalism/infrastructure.git:setup.yaml)
       - { "name": "CVNBot14" } # #cvn-commons (Heavy)
+      - { "name": "CVNBot15" } # #cvn-simplewikis (Light)
       - { "name": "CVNBot18" } # #cvn-wikidata (Super Heavy)
       - { "name": "CVNBot20" } # #cvn-bn-scan (Light)
       - { "name": "CVNBot21" } # #cvn-mediawiki (Light)
-      - { "name": "CVNBot15" } # #cvn-simplewikis (Light)
     #
     # Server: cvn-app9 (CPU: 4x, Memory: 8GB RAM)
     #
@@ -47,7 +47,7 @@ template-tasks:
        cmd: "python {cvn}/git/CVNClerkBot/cvnclerkbot.py > {cvn}/log/cvnclerkbot.log 2>&1"
        match: "python {cvn}/git/CVNClerkBot/cvnclerkbot.py"
        user: false
-    "CVNBot_v3@cvn-app9":
+    "CVNBot_v4@cvn-app9":
       - { "name": "CVNBot6" } # #cvn-sw (SWMT group 1; Heavy)
       - { "name": "CVNBot7" } # #cvn-sw (SWMT group 2; Medium)
       - { "name": "CVNBot8" } # #cvn-sw (SWMT group 3; Heavy)
