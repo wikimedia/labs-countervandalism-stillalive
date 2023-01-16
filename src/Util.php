@@ -8,13 +8,14 @@
 
 namespace StillAlive;
 
-use Symfony\Component\Yaml\Yaml;
 use Symfony\Component\Yaml\Exception\ParseException;
+use Symfony\Component\Yaml\Yaml;
 
 class Util {
 	private static $rPropStringTpl = '/\{\s*([a-zA-Z0-9_\-$]+)\s*\}/';
 
 	/**
+	 * @param string $filename
 	 * @return bool|array
 	 * @throws ParseException
 	 */
@@ -33,6 +34,7 @@ class Util {
 	/**
 	 * From https://stackoverflow.com/a/19136663/319266
 	 * @param string $str
+	 * @return string
 	 */
 	public static function stripComments( $str = '' ) {
 		$str = preg_replace( '![ \t]*//.*[ \t]*[\r\n]!', '', $str );
@@ -48,13 +50,13 @@ class Util {
 	 * @param array &$parameters
 	 * @return string
 	 */
-	public static function placeholder( &$x, &$parameters = array() ) {
+	public static function placeholder( &$x, &$parameters = [] ) {
 		if ( is_array( $x ) ) {
 			foreach ( $x as $key => &$value ) {
 				$value = self::placeholder( $value, $parameters );
 			}
 		} elseif ( is_string( $x ) ) {
-			$x = preg_replace_callback( self::$rPropStringTpl, function ( $matches ) use ( $parameters ) {
+			$x = preg_replace_callback( self::$rPropStringTpl, static function ( $matches ) use ( $parameters ) {
 				$name = $matches[1];
 				if ( isset( $parameters[$name] ) ) {
 					return $parameters[$name];

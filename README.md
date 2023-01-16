@@ -1,5 +1,3 @@
-[![Build Status](https://github.com/countervandalism/stillalive/actions/workflows/CI.yaml/badge.svg)](https://github.com/countervandalism/stillalive/actions/workflows/CI.yaml)
-
 # stillalive
 
 A basic PHP script to ensure certain processes stay alive.

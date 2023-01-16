@@ -2,9 +2,13 @@
 localSettings.json
 localSettings.yaml
 
-# vendor (filter)
+# build
+/.phpunit.result.cache
 /composer.lock
-/vendor/symfony/yaml/.gitignore
-/vendor/symfony/yaml/CHANGELOG.md
-/vendor/symfony/yaml/phpunit.xml.dist
-/vendor/symfony/yaml/Tests
+
+# non-production vendor
+/vendor/
+!/vendor/autoload.php
+!/vendor/bin/
+!/vendor/composer/
+!/vendor/ulrichsg/

@@ -8,30 +8,30 @@
 
 namespace StillAlive;
 
-use GetOpt\GetOpt;
-use GetOpt\ArgumentException;
 use DomainException;
+use GetOpt\ArgumentException;
+use GetOpt\GetOpt;
 use InvalidArgumentException;
-use RuntimeException;
 
 class Main {
 	public $opt;
 	private $exitCode = 1;
+	private $params;
 
 	/**
-	 * @param array $options
+	 * @param array{arg:string,configFile:array} $params
 	 *  - string 'arg' Defaults to `$_SERVER['argv']`.
 	 *  - array 'configFile' Defaults to localSettings.yaml, localSettings.json
 	 * @throws InvalidArgumentException
 	 */
-	public function __construct( array $params = array() ) {
-		$params += array(
+	public function __construct( array $params = [] ) {
+		$params += [
 			'arg' => null,
-			'configFile' => array(
+			'configFile' => [
 				__DIR__ . '/../localSettings.yaml',
 				__DIR__ . '/../localSettings.json',
-			)
-		);
+			]
+		];
 
 		if ( !$params['configFile'] ) {
 			throw new InvalidArgumentException( 'Config parameter must not be empty' );
@@ -99,7 +99,7 @@ class Main {
 		}
 
 		// Validate top-level required fields
-		foreach ( array( 'cwd' ) as $key ) {
+		foreach ( [ 'cwd' ] as $key ) {
 			if ( !isset( $config[$key] ) ) {
 				throw new DomainException( "Config is missing key '{$key}'" );
 			}
@@ -130,7 +130,7 @@ class Main {
 					Util::placeholder( $copy, $entry );
 
 					// Add optional overrides
-					foreach ( array( 'cmd', 'cwd', 'user', 'match', 'pool', 'disabled' ) as $key ) {
+					foreach ( [ 'cmd', 'cwd', 'user', 'match', 'pool', 'disabled' ] as $key ) {
 						if ( isset( $entry[$key] ) ) {
 							$copy[$key] = $entry[$key];
 						}
@@ -145,9 +145,9 @@ class Main {
 		foreach ( $config['tasks'] as $taskID => &$task ) {
 			// Expand simple string
 			if ( is_string( $task ) ) {
-				$task = array(
+				$task = [
 					'cmd' => $task,
-				);
+				];
 			}
 
 			// Validate required task field
@@ -197,6 +197,7 @@ class Main {
 			}
 			// - Override user if specified
 			if ( $task['user'] ) {
+				// phpcs:ignore MediaWiki.Usage.ForbiddenFunctions.escapeshellarg
 				$task['cmd'] = 'sudo -u ' . escapeshellarg( $task['user'] ) . ' ' . $task['cmd'];
 			}
 
@@ -240,17 +241,26 @@ class Main {
 	 * @codeCoverageIgnore
 	 */
 	protected function getPsDump() {
-		return shell_exec( 'ps aux' );
+		// phpcs:ignore MediaWiki.Usage.ForbiddenFunctions.shell_exec
+		return shell_exec( 'ps aux' ) ?: '';
 	}
 
-	/** @codeCoverageIgnore */
+	/**
+	 * @param string $cwd
+	 * @param string $command
+	 * @codeCoverageIgnore
+	 */
 	protected function exec( $cwd, $command ) {
 		chdir( $cwd );
+		// phpcs:ignore MediaWiki.Usage.ForbiddenFunctions.exec
 		exec( $command );
 		sleep( 1 );
 	}
 
-	/** @codeCoverageIgnore */
+	/**
+	 * @param string $text
+	 * @codeCoverageIgnore
+	 */
 	protected function output( $text ) {
 		print "$text\n";
 	}

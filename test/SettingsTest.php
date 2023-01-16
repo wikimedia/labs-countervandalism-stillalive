@@ -4,7 +4,10 @@ namespace StillAlive\Test;
 
 use StillAlive\Util;
 
-class SettingsTest extends \PHPUnit_Framework_TestCase {
+/**
+ * @covers Util
+ */
+class SettingsTest extends \PHPUnit\Framework\TestCase {
 	public function testCvnSettings() {
 		$localSettings = Util::loadConfig( dirname( __DIR__ ) . '/localSettings-cvn.yaml' );
 

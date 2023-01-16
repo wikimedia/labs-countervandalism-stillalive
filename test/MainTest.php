@@ -4,34 +4,35 @@ namespace StillAlive\Test;
 
 use InvalidArgumentException;
 use org\bovigo\vfs\vfsStream;
-use org\bovigo\vfs\vfsStreamDirectory;
 use StillAlive\Main;
-use StillAlive\Util;
 use Wikimedia\TestingAccessWrapper;
 
-class MainTest extends \PHPUnit_Framework_TestCase {
+/**
+ * @covers Main
+ */
+class MainTest extends \PHPUnit\Framework\TestCase {
 	/**
-	 * @var  vfsStreamDirectory
+	 * @var fsStreamDirectory
 	 */
 	private $tmpDir;
 
-	public function setUp() {
+	public function setUp(): void {
 		$this->tmpDir = vfsStream::setup( 'tmp' );
 	}
 
 	public static function provideArgs() {
-		return array(
-			array( '' ),
-			array( '-v' ),
-			array( '--help' ),
-			array( '--dry' ),
-			array( '--pool example' ),
-			array( '--pool=example' ),
-			array( 'x', 'No more operands expected' ),
-			array( '-x', 'is unknown' ),
-			array( '-v x', 'No more operands expected' ),
-			array( '--pool', 'must have a value' ),
-		);
+		return [
+			[ '' ],
+			[ '-v' ],
+			[ '--help' ],
+			[ '--dry' ],
+			[ '--pool example' ],
+			[ '--pool=example' ],
+			[ 'x', 'No more operands expected' ],
+			[ '-x', 'is unknown' ],
+			[ '-v x', 'No more operands expected' ],
+			[ '--pool', 'must have a value' ],
+		];
 	}
 
 	/**
@@ -41,197 +42,198 @@ class MainTest extends \PHPUnit_Framework_TestCase {
 		if ( $errorMsg ) {
 			$this->expectOutputRegex( "/$errorMsg/" );
 		}
-		$app = new Main( array( 'arg' => $arg ) );
+		$app = new Main( [ 'arg' => $arg ] );
 		$this->assertSame( $app->getExitCode(), $errorMsg ? 1 : 0, 'Exit code' );
 	}
 
 	public function testConstructorBadConfigFile() {
-		$this->setExpectedException( InvalidArgumentException::class, 'Config parameter' );
-		$app = new Main( array( 'configFile' => '' ) );
+		$this->expectException( InvalidArgumentException::class, 'Config parameter' );
+		$app = new Main( [ 'configFile' => '' ] );
 	}
 
 	public function testHelpText() {
-		$expected = 'Usage: stillalive [options] 
+		$expected = 'Usage: stillalive [options] ' . '
 
 Options:
   --dry          Dry run (will not execute any tasks)
   --pool <arg>   Only execute tasks in this pool
   -v, --verbose  Be verbose in output
   -h, --help     Show this message
+
 ';
 
 		$this->expectOutputString( $expected );
-		$app = new Main( array( 'arg' => '--help' ) );
+		$app = new Main( [ 'arg' => '--help' ] );
 		TestingAccessWrapper::newFromObject( $app )
 			->opt->set( \GetOpt\GetOpt::SETTING_SCRIPT_NAME, 'stillalive' );
 		$app->run();
-		$this->assertSame( $app->getExitCode(), 0, 'Exit code' );
+		$this->assertSame( 0, $app->getExitCode(), 'Exit code' );
 	}
 
 	public static function provideConfig() {
-		return array(
-			'empty config' => array(
+		return [
+			'empty config' => [
 				'arg' => '',
-				'config' => array(
+				'config' => [
 					'cwd' => '/tmp',
-					'tasks' => array(),
-				),
-				'tasks' => array(),
-			),
-			'simple task' => array(
+					'tasks' => [],
+				],
+				'tasks' => [],
+			],
+			'simple task' => [
 				'arg' => '',
-				'config' => array(
+				'config' => [
 					'cwd' => '/tmp',
-					'tasks' => array(
+					'tasks' => [
 						'sleep 1',
-					),
-				),
-				'tasks' => array(
-					array(
+					],
+				],
+				'tasks' => [
+					[
 						'cwd' => '/tmp',
 						'cmd' => 'nohup sleep 1 &',
 						'match' => 'sleep 1',
-					),
-				),
-			),
-			'parameters, user and disabled' => array(
+					],
+				],
+			],
+			'parameters, user and disabled' => [
 				'arg' => '',
-				'config' => array(
+				'config' => [
 					'cwd' => '/tmp',
 					'user' => 'nobody',
-					'parameters' => array(
+					'parameters' => [
 						'mykey' => 'my "value"',
-					),
-					'tasks' => array(
-						array(
+					],
+					'tasks' => [
+						[
 							'cmd' => 'sleep 1 | echo {mykey} > /dev/null 2>&1',
 							'match' => 'sleep 1',
-						),
-						array(
+						],
+						[
 							'cmd' => 'sleep 2',
 							'user' => false
-						),
-						array(
+						],
+						[
 							'cmd' => 'sleep 3',
 							'disabled' => true
-						)
-					),
-				),
-				'tasks' => array(
-					array(
+						]
+					],
+				],
+				'tasks' => [
+					[
 						'cwd' => '/tmp',
 						'cmd' => 'sudo -u \'nobody\' nohup sleep 1 | echo my "value" > /dev/null 2>&1 &',
 						'match' => 'sleep 1',
-					),
-					array(
+					],
+					[
 						'cwd' => '/tmp',
 						'cmd' => 'nohup sleep 2 &',
 						'match' => 'sleep 2',
-					),
-				),
-			),
-			'templated task' => array(
+					],
+				],
+			],
+			'templated task' => [
 				'arg' => '',
-				'config' => array(
+				'config' => [
 					'cwd' => '/tmp',
-					'tasks' => array(
+					'tasks' => [
 						'sleep 1',
-					),
-					'templates' => array(
-						'repeat' => array(
+					],
+					'templates' => [
+						'repeat' => [
 							'cmd' => 'echo {word} {word} {word}',
 							'cwd' => '/tmp/repeat-{word}',
-						),
-					),
-					'template-tasks' => array(
-						'repeat' => array(
-							array( 'word' => 'this' ),
-							array( 'word' => 'that', 'cwd' => '/tmp/override' ),
-						),
-					),
-				),
-				'tasks' => array(
-					array(
+						],
+					],
+					'template-tasks' => [
+						'repeat' => [
+							[ 'word' => 'this' ],
+							[ 'word' => 'that', 'cwd' => '/tmp/override' ],
+						],
+					],
+				],
+				'tasks' => [
+					[
 						'cwd' => '/tmp',
 						'cmd' => 'nohup sleep 1 &',
 						'match' => 'sleep 1',
-					),
-					array(
+					],
+					[
 						'cwd' => '/tmp/repeat-this',
 						'cmd' => 'nohup echo this this this &',
 						'match' => 'echo this this this',
-					),
-					array(
+					],
+					[
 						'cwd' => '/tmp/override',
 						'cmd' => 'nohup echo that that that &',
 						'match' => 'echo that that that',
-					),
-				),
-			),
-			'default pool' => array(
+					],
+				],
+			],
+			'default pool' => [
 				'arg' => '',
-				'config' => array(
+				'config' => [
 					'cwd' => '/tmp',
-					'tasks' => array(
+					'tasks' => [
 						'sleep 1',
-					),
-					'templates' => array(
-						'repeat' => array(
+					],
+					'templates' => [
+						'repeat' => [
 							'cmd' => 'echo {word} {word} {word}',
 							'cwd' => '/tmp/repeat-{word}',
-						),
-					),
-					'template-tasks' => array(
-						'repeat' => array(
-							array( 'word' => 'this', 'pool' => 'srv1' ),
-							array( 'word' => 'this', 'pool' => 'srv2' ),
-							array( 'word' => 'that', 'pool' => 'srv2' ),
-						),
-					),
-				),
-				'tasks' => array(
-					array(
+						],
+					],
+					'template-tasks' => [
+						'repeat' => [
+							[ 'word' => 'this', 'pool' => 'srv1' ],
+							[ 'word' => 'this', 'pool' => 'srv2' ],
+							[ 'word' => 'that', 'pool' => 'srv2' ],
+						],
+					],
+				],
+				'tasks' => [
+					[
 						'cwd' => '/tmp',
 						'cmd' => 'nohup sleep 1 &',
 						'match' => 'sleep 1',
-					),
-				),
-			),
-			'specific pool' => array(
+					],
+				],
+			],
+			'specific pool' => [
 				'arg' => '--pool srv2',
-				'config' => array(
+				'config' => [
 					'cwd' => '/tmp',
-					'tasks' => array(
+					'tasks' => [
 						'sleep 1',
-					),
-					'templates' => array(
-						'repeat' => array(
+					],
+					'templates' => [
+						'repeat' => [
 							'cmd' => 'echo {word} {word} {word}',
 							'cwd' => '/tmp/repeat-{word}',
-						),
-					),
-					'template-tasks' => array(
-						'repeat' => array(
-							array( 'word' => 'this', 'pool' => 'srv1' ),
-							array( 'word' => 'this', 'pool' => 'srv2' ),
-							array( 'word' => 'that', 'pool' => 'srv2' ),
-						),
-					),
-				),
-				'tasks' => array(
-					array(
+						],
+					],
+					'template-tasks' => [
+						'repeat' => [
+							[ 'word' => 'this', 'pool' => 'srv1' ],
+							[ 'word' => 'this', 'pool' => 'srv2' ],
+							[ 'word' => 'that', 'pool' => 'srv2' ],
+						],
+					],
+				],
+				'tasks' => [
+					[
 						'cwd' => '/tmp/repeat-this',
 						'cmd' => 'nohup echo this this this &',
 						'match' => 'echo this this this',
-					),
-					array(
+					],
+					[
 						'cwd' => '/tmp/repeat-that',
 						'cmd' => 'nohup echo that that that &',
 						'match' => 'echo that that that',
-					),
-				),
-			),
-		);
+					],
+				],
+			],
+		];
 	}
 
 	/**
@@ -240,47 +242,47 @@ Options:
 	public function testGetTasks( $arg, $config, $tasks ) {
 		$path = vfsStream::url( 'tmp/settings.json' );
 		file_put_contents( $path, json_encode( $config ) );
-		$app = new Main( array( 'arg' => $arg, 'configFile' => $path ) );
+		$app = new Main( [ 'arg' => $arg, 'configFile' => $path ] );
 
 		$this->assertEquals( $tasks, $app->getTasks() );
 	}
 
 	public static function provideBadConfigData() {
-		return array(
-			'empty' => array(
-				'config' => array(),
+		return [
+			'empty' => [
+				'config' => [],
 				'error' => "missing key 'cwd'",
-			),
-			'no tasks' => array(
-				'config' => array( 'cwd' => '/tmp' ),
+			],
+			'no tasks' => [
+				'config' => [ 'cwd' => '/tmp' ],
 				'error' => "must have at least one of 'tasks' or 'template-tasks'",
-			),
-			'unused template' => array(
-				'config' => array(
+			],
+			'unused template' => [
+				'config' => [
 					'cwd' => '/tmp',
-					'tasks' => array(),
-					'templates' => array(),
-				),
+					'tasks' => [],
+					'templates' => [],
+				],
 				'error' => "unused or incomplete template",
-			),
-			'incomplete template' => array(
-				'config' => array(
+			],
+			'incomplete template' => [
+				'config' => [
 					'cwd' => '/tmp',
-					'tasks' => array(),
-					'template-tasks' => array(),
-				),
+					'tasks' => [],
+					'template-tasks' => [],
+				],
 				'error' => "unused or incomplete template",
-			),
-			'no cmd' => array(
-				'config' => array(
+			],
+			'no cmd' => [
+				'config' => [
 					'cwd' => '/tmp',
-					'tasks' => array(
-						array(),
-					),
-				),
+					'tasks' => [
+						[],
+					],
+				],
 				'error' => "missing key 'cmd'",
-			),
-		);
+			],
+		];
 	}
 
 	/**
@@ -289,25 +291,26 @@ Options:
 	public function testGetTasksBadConfigData( $config, $error ) {
 		$path = vfsStream::url( 'tmp/settings.json' );
 		file_put_contents( $path, json_encode( $config ) );
-		$app = new Main( array( 'arg' => '', 'configFile' => $path ) );
+		$app = new Main( [ 'arg' => '', 'configFile' => $path ] );
 
-		$this->setExpectedExceptionRegExp( \DomainException::class, "/$error/" );
+		$this->expectException( \DomainException::class );
+		$this->expectExceptionMessageMatches( "/$error/" );
 		$app->getTasks();
 	}
 
 	public function testGetTasksBadConfigFile() {
 		$path = vfsStream::url( 'tmp/settings.json' );
 		file_put_contents( $path, 'invalid json' );
-		$app = new Main( array( 'arg' => '', 'configFile' => $path ) );
+		$app = new Main( [ 'arg' => '', 'configFile' => $path ] );
 
-		$this->setExpectedException( InvalidArgumentException::class, 'invalid syntax' );
+		$this->expectException( InvalidArgumentException::class, 'invalid syntax' );
 		$this->assertFalse( $app->getTasks() );
 	}
 
 	public function testEnsureTasksWillStart() {
 		$app = $this->getMockBuilder( Main::class )
-			->setConstructorArgs( array( array( 'arg' => '', 'configFile' => 'unused' ) ) )
-			->setMethods( array( 'run', 'getTasks', 'getPsDump', 'exec', 'output' ) )
+			->setConstructorArgs( [ [ 'arg' => '', 'configFile' => 'unused' ] ] )
+			->onlyMethods( [ 'run', 'getTasks', 'getPsDump', 'exec', 'output' ] )
 			->getMock();
 
 		$app->expects( $this->once() )->method( 'getPsDump' )
@@ -316,17 +319,17 @@ Options:
 		$app->expects( $this->once() )->method( 'exec' )
 			->with( '/tmp', 'sleep 10 &' );
 
-		$app->ensureTasks( array( array(
+		$app->ensureTasks( [ [
 			'cwd' => '/tmp',
 			'cmd' => 'sleep 10 &',
 			'match' => 'sleep 10',
-		) ) );
+		] ] );
 	}
 
 	public function testEnsureTasksWillDry() {
 		$app = $this->getMockBuilder( Main::class )
-			->setConstructorArgs( array( array( 'arg' => '--dry', 'configFile' => 'unused' ) ) )
-			->setMethods( array( 'run', 'getTasks', 'getPsDump', 'exec', 'output' ) )
+			->setConstructorArgs( [ [ 'arg' => '--dry', 'configFile' => 'unused' ] ] )
+			->onlyMethods( [ 'run', 'getTasks', 'getPsDump', 'exec', 'output' ] )
 			->getMock();
 
 		$app->expects( $this->once() )->method( 'getPsDump' )
@@ -334,17 +337,17 @@ Options:
 
 		$app->expects( $this->never() )->method( 'exec' );
 
-		$app->ensureTasks( array( array(
+		$app->ensureTasks( [ [
 			'cwd' => '/tmp',
 			'cmd' => 'sleep 10 &',
 			'match' => 'sleep 10',
-		) ) );
+		] ] );
 	}
 
 	public function testEnsureTasksWillDetect() {
 		$app = $this->getMockBuilder( Main::class )
-			->setConstructorArgs( array( array( 'arg' => '', 'configFile' => 'unused' ) ) )
-			->setMethods( array( 'run', 'getTasks', 'getPsDump', 'exec', 'output' ) )
+			->setConstructorArgs( [ [ 'arg' => '', 'configFile' => 'unused' ] ] )
+			->onlyMethods( [ 'run', 'getTasks', 'getPsDump', 'exec', 'output' ] )
 			->getMock();
 
 		$app->expects( $this->once() )->method( 'getPsDump' )->willReturn(
@@ -355,10 +358,10 @@ Options:
 
 		$app->expects( $this->never() )->method( 'exec' );
 
-		$app->ensureTasks( array( array(
+		$app->ensureTasks( [ [
 			'cwd' => '/tmp',
 			'cmd' => 'nohup sleep 10 &',
 			'match' => 'sleep 10',
-		) ) );
+		] ] );
 	}
 }
