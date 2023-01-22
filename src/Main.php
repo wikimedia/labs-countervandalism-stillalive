@@ -125,7 +125,15 @@ class Main {
 		}
 		if ( isset( $config['template-tasks'] ) ) {
 			foreach ( $config['template-tasks'] as $templateID => $entries ) {
-				foreach ( $entries as $entry ) {
+				// In YAML, a key followed by nothing is interpreted as null,
+				// not as empty array, e.g. 'foo' is null:
+				//
+				//    foo:
+				//    # - y
+				//    bar:
+				//    - z
+				//
+				foreach ( $entries ?? [] as $entry ) {
 					$copy = $config['templates'][$templateID];
 					Util::placeholder( $copy, $entry );
 
