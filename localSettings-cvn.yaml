@@ -3,11 +3,6 @@ parameters:
 cwd: "/tmp"
 user: "cvn.cvnservice"
 templates:
-  CVNBot_v4@cvn-app9:
-    cwd: "{cvn}/services/cvnbot/{name}"
-    cmd: "mono {cvn}/services/cvnbot/{name}/CVNBot.exe > /dev/null 2>&1"
-    match: "mono {cvn}/services/cvnbot/{name}/CVNBot.exe"
-    pool: "cvn-app9"
   CVNBot_v4@cvn-app10:
     cwd: "{cvn}/services/cvnbot/{name}"
     cmd: "mono {cvn}/services/cvnbot/{name}/CVNBot.exe > /dev/null 2>&1"
@@ -26,15 +21,6 @@ templates:
 
 template-tasks:
     # https://meta.wikimedia.org/wiki/Countervandalism_Network/Bots
-    #
-    # Server: cvn-app9 (CPU: 4x, Memory: 8GB RAM)
-    #
-    "CVNBot_v4@cvn-app9":
-      - { "name": "CVNBot25" } # #cvn-ko-scan (Medium)
-      - { "name": "CVNBot26" } # #cvn-ar-scan (Medium)
-      - { "name": "CVNBot27" } # #cvn-wp-hr (Light)
-      - { "name": "CVNBot28" } # #cvn-wp-fr (Medium)
-      - { "name": "CVNBot29" } # #cvn-es-scan (Medium)
     #
     # Server: cvn-app10 (CPU: 4x, Memory: 8GB RAM)
     # Load: 1 Super Heavy, 2 Heavy, 4 Medium
@@ -74,8 +60,8 @@ template-tasks:
       - { "name": "CVNBot22" } # #cvn-mk-scan (Light)
       - { "name": "CVNBot23" } # #cvn-zh-scan (Light)
       - { "name": "CVNBot24" } # #cvn-wp-he (Light)
-      #- { "name": "CVNBot25" } # #cvn-ko-scan (Medium)
-      #- { "name": "CVNBot26" } # #cvn-ar-scan (Medium)
-      #- { "name": "CVNBot27" } # #cvn-wp-hr (Light)
-      #- { "name": "CVNBot28" } # #cvn-wp-fr (Medium)
-      #- { "name": "CVNBot29" } # #cvn-es-scan (Medium)
+      - { "name": "CVNBot25" } # #cvn-ko-scan (Medium)
+      - { "name": "CVNBot26" } # #cvn-ar-scan (Medium)
+      - { "name": "CVNBot27" } # #cvn-wp-hr (Light)
+      - { "name": "CVNBot28" } # #cvn-wp-fr (Medium)
+      - { "name": "CVNBot29" } # #cvn-es-scan (Medium)
