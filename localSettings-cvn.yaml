@@ -36,13 +36,6 @@ template-tasks:
     # Load: 1 Super Heavy, 2 Heavy, 4 Medium
     #
     "CVNBot_v4@cvn-app8":
-      - { "name": "CVNBot1" } # #cvn-wp-en (Heavy)
-      - { "name": "CVNBot2" } # #cvn-wp-ru (Medium)
-      - { "name": "CVNBot3" } # #cvn-wp-es (Heavy)
-      - { "name": "CVNBot4" } # #cvn-it-scan (Medium)
-      - { "name": "CVNBot5" } # #cvn-meta (Light)
-      - { "name": "CVNBot11" } # #cvn-commons-uploads (Medium)
-      - { "name": "CVNBot12" } # #cvn-wp-nl (Medium)
       - { "name": "CVNBot13" } # #cvn-wp-da (Light)
       # Beware: CVNBot14 is pinned to cvn-app8 for cvndb-publish.cron (see countervandalism/infrastructure.git:setup.yaml)
       - { "name": "CVNBot14" } # #cvn-commons (Heavy)
@@ -75,13 +68,13 @@ template-tasks:
     # Load: 1 Super Heavy, 2 Heavy, 4 Medium
     #
     "CVNBot_v4@cvn-app10":
-      #- { "name": "CVNBot1" } # #cvn-wp-en (Heavy)
-      #- { "name": "CVNBot2" } # #cvn-wp-ru (Medium)
-      #- { "name": "CVNBot3" } # #cvn-wp-es (Heavy)
-      #- { "name": "CVNBot4" } # #cvn-it-scan (Medium)
-      #- { "name": "CVNBot5" } # #cvn-meta (Light)
-      #- { "name": "CVNBot11" } # #cvn-commons-uploads (Medium)
-      #- { "name": "CVNBot12" } # #cvn-wp-nl (Medium)
+      - { "name": "CVNBot1" } # #cvn-wp-en (Heavy)
+      - { "name": "CVNBot2" } # #cvn-wp-ru (Medium)
+      - { "name": "CVNBot3" } # #cvn-wp-es (Heavy)
+      - { "name": "CVNBot4" } # #cvn-it-scan (Medium)
+      - { "name": "CVNBot5" } # #cvn-meta (Light)
+      - { "name": "CVNBot11" } # #cvn-commons-uploads (Medium)
+      - { "name": "CVNBot12" } # #cvn-wp-nl (Medium)
       #- { "name": "CVNBot13" } # #cvn-wp-da (Light)
       ## Beware: CVNBot14 is pinned to cvn-app10 for cvndb-publish.cron (see countervandalism/infrastructure.git:setup.yaml)
       #- { "name": "CVNBot14" } # #cvn-commons (Heavy)
