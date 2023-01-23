@@ -30,11 +30,6 @@ template-tasks:
     # Server: cvn-app9 (CPU: 4x, Memory: 8GB RAM)
     #
     "CVNBot_v4@cvn-app9":
-      - { "name": "CVNBot6" } # #cvn-sw (SWMT group 1; Heavy)
-      - { "name": "CVNBot7" } # #cvn-sw (SWMT group 2; Medium)
-      - { "name": "CVNBot8" } # #cvn-sw (SWMT group 3; Heavy)
-      - { "name": "CVNBot9" } # #cvn-sw (SWMT group 4; Light)
-      - { "name": "CVNBot10" } # #cvn-sw (SWMT group 5; Light)
       - { "name": "CVNBot16" } # #cvn-ja (Medium)
       - { "name": "CVNBot17" } # #cvn-wikivoyage (Light)
       - { "name": "CVNBot19" } # #cvn-sw (SWMT group 6; Light)
@@ -74,11 +69,11 @@ template-tasks:
        match: "python3 {cvn}/git/CVNClerkBot/cvnclerkbot.py"
        user: false
     "CVNBot_v4@cvn-app12":
-      #- { "name": "CVNBot6" } # #cvn-sw (SWMT group 1; Heavy)
-      #- { "name": "CVNBot7" } # #cvn-sw (SWMT group 2; Medium)
-      #- { "name": "CVNBot8" } # #cvn-sw (SWMT group 3; Heavy)
-      #- { "name": "CVNBot9" } # #cvn-sw (SWMT group 4; Light)
-      #- { "name": "CVNBot10" } # #cvn-sw (SWMT group 5; Light)
+      - { "name": "CVNBot6" } # #cvn-sw (SWMT group 1; Heavy)
+      - { "name": "CVNBot7" } # #cvn-sw (SWMT group 2; Medium)
+      - { "name": "CVNBot8" } # #cvn-sw (SWMT group 3; Heavy)
+      - { "name": "CVNBot9" } # #cvn-sw (SWMT group 4; Light)
+      - { "name": "CVNBot10" } # #cvn-sw (SWMT group 5; Light)
       #- { "name": "CVNBot16" } # #cvn-ja (Medium)
       #- { "name": "CVNBot17" } # #cvn-wikivoyage (Light)
       #- { "name": "CVNBot19" } # #cvn-sw (SWMT group 6; Light)
