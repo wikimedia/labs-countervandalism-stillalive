@@ -15,7 +15,7 @@ trait WithOptions
      *
      * $options can be a string as for phps `getopt()` function, an array of Option instances or an array of arrays.
      *
-     * You can also mix Option instances and arrays. Eg.:
+     * You can also mix Option instances and arrays. E.g.:
      * $getopt->addOptions([
      *   ['?', 'help', GetOpt::NO_ARGUMENT, 'Show this help'],
      *   new Option('v', 'verbose'),
@@ -23,7 +23,7 @@ trait WithOptions
      *   Option::create('q', 'quiet')->setDescription('Don\'t write any output')
      * ]);
      *
-     * @see OptionParser::parseArray() fo see how to use arrays
+     * @see OptionParser::parseArray() for how to use arrays
      * @param string|array|Option[] $options
      * @return self
      */
@@ -77,8 +77,8 @@ trait WithOptions
         }
 
         $this->options[] = $option;
-        $short = $option->short();
-        $long = $option->long();
+        $short = $option->getShort();
+        $long = $option->getLong();
         if ($short) {
             $this->optionMapping[$short] = $option;
         }
@@ -97,9 +97,9 @@ trait WithOptions
      */
     public function conflicts(Option $option)
     {
-        $short = $option->short();
-        $long = $option->long();
-        return $short && isset($this->optionMapping[$short]) || $long && isset($this->optionMapping[$long]);
+        $short = $option->getShort();
+        $long = $option->getLong();
+        return ($short && isset($this->optionMapping[$short])) || ($long && isset($this->optionMapping[$long]));
     }
 
     /**

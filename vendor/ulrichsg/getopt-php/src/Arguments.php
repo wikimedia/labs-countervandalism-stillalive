@@ -38,27 +38,28 @@ class Arguments
      */
     public function process(GetOpt $getopt, callable $setOption, callable $setCommand, callable $addOperand)
     {
+        $operands = [];
         while (($arg = array_shift($this->arguments)) !== null) {
             if ($this->isMeta($arg)) {
                 // everything from here are operands
-                foreach ($this->arguments as $argument) {
-                    $addOperand($argument);
-                }
-                break;
+                $this->flushOperands($operands, $addOperand);
+                $this->flushOperands($this->arguments, $addOperand);
+                return true;
             }
 
             if ($this->isValue($arg)) {
-                $operands = $getopt->getOperands();
-                if (empty($operands) && $command = $getopt->getCommand($arg)) {
+                $operands[] = $arg;
+                if (count($getopt->getOperands()) === 0 && $command = $getopt->getCommand(implode(' ', $operands))) {
                     $setCommand($command);
-                } else {
-                    $addOperand($arg);
+                    $operands = [];
                 }
+            } else {
+                $this->flushOperands($operands, $addOperand);
             }
 
             if ($this->isLongOption($arg)) {
-                $setOption($this->longName($arg), function () use ($arg) {
-                    return $this->value($arg);
+                $setOption($this->longName($arg), function (Option $option = null) use ($arg) {
+                    return $this->value($arg, null, $option);
                 });
                 continue;
             }
@@ -66,9 +67,9 @@ class Arguments
             // the only left is short options
             foreach ($this->shortNames($arg) as $name) {
                 $requestedValue = false;
-                $setOption($name, function () use ($arg, $name, &$requestedValue) {
+                $setOption($name, function (Option $option = null) use ($arg, $name, &$requestedValue) {
                     $requestedValue = true;
-                    return $this->value($arg, $name);
+                    return $this->value($arg, $name, $option);
                 });
 
                 if ($requestedValue) {
@@ -77,7 +78,25 @@ class Arguments
                 }
             }
         }
+
+        $this->flushOperands($operands, $addOperand);
+
         return true;
+    }
+
+    /**
+     * Add operands and reset the array
+     *
+     * @param array    $operands
+     * @param callable $addOperand
+     */
+    protected function flushOperands(array &$operands, callable $addOperand)
+    {
+        foreach ($operands as $operand) {
+            $addOperand($operand);
+        }
+
+        $operands = [];
     }
 
     /**
@@ -99,7 +118,7 @@ class Arguments
      */
     protected function isValue($arg)
     {
-        return (empty($arg) || $arg === '-' || $arg[0] !== '-');
+        return (empty($arg) || $arg === '-' || 0 !== strpos($arg, '-'));
     }
 
     /**
@@ -163,16 +182,20 @@ class Arguments
      *
      * @param string $arg
      * @param string $name
+     * @param Option $option
      * @return string
      */
-    protected function value($arg, $name = null)
+    protected function value($arg, $name = null, Option $option = null)
     {
         $p = strpos($arg, $this->isLongOption($arg) ? '=' : $name);
         if ($this->isLongOption($arg) && $p || !$this->isLongOption($arg) && $p < strlen($arg)-1) {
             return substr($arg, $p+1);
         }
 
-        if (!empty($this->arguments) && $this->isValue($this->arguments[0])) {
+        if (!empty($this->arguments) && (
+                $option && in_array($option->getMode(), [GetOpt::REQUIRED_ARGUMENT, GetOpt::MULTIPLE_ARGUMENT]) ||
+                $this->isValue($this->arguments[0])
+            )) {
             return array_shift($this->arguments);
         }
 
@@ -197,7 +220,7 @@ class Arguments
 
         $state = 'n'; // states: n (normal), d (double quoted), s (single quoted)
         for ($i = 0; $i < strlen($argsString); $i++) {
-            $char = $argsString{$i};
+            $char = $argsString[$i];
             switch ($state) {
                 case 'n':
                     if ($char === '\'') {
@@ -217,7 +240,7 @@ class Arguments
                         $state = 'n';
                     } elseif ($char === '\\') {
                         $i++;
-                        $argv[$argc] .= $argsString{$i};
+                        $argv[$argc] .= $argsString[$i];
                     } else {
                         $argv[$argc] .= $char;
                     }
@@ -228,7 +251,7 @@ class Arguments
                         $state = 'n';
                     } elseif ($char === '\\') {
                         $i++;
-                        $argv[$argc] .= $argsString{$i};
+                        $argv[$argc] .= $argsString[$i];
                     } else {
                         $argv[$argc] .= $char;
                     }

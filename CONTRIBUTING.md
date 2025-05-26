@@ -18,8 +18,6 @@
 		}
 	```
 
-* Ensure composer is 2.2 LTS (not later!). If you have a later version,
-  run `composer selfupdate --2.2` to downgrade. This is to ensure
-  support for PHP 7.0 autoloader.
+* Ensure your Composer install is at version 2.6 or later.
 
 * Run `composer update --no-dev`

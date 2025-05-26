@@ -4,7 +4,7 @@
 
 namespace Composer\Autoload;
 
-class ComposerStaticInit9b65dea655d2ae3c3b1dc488948ae60c
+class ComposerStaticInit8c757d8b2adeb62e302998ff7096c236
 {
     public static $prefixLengthsPsr4 = array (
         'S' => 
@@ -42,12 +42,16 @@ class ComposerStaticInit9b65dea655d2ae3c3b1dc488948ae60c
         'GetOpt\\ArgumentException\\Unexpected' => __DIR__ . '/..' . '/ulrichsg/getopt-php/src/ArgumentException/Unexpected.php',
         'GetOpt\\Arguments' => __DIR__ . '/..' . '/ulrichsg/getopt-php/src/Arguments.php',
         'GetOpt\\Command' => __DIR__ . '/..' . '/ulrichsg/getopt-php/src/Command.php',
+        'GetOpt\\CommandInterface' => __DIR__ . '/..' . '/ulrichsg/getopt-php/src/CommandInterface.php',
+        'GetOpt\\Describable' => __DIR__ . '/..' . '/ulrichsg/getopt-php/src/Describable.php',
         'GetOpt\\GetOpt' => __DIR__ . '/..' . '/ulrichsg/getopt-php/src/GetOpt.php',
         'GetOpt\\Help' => __DIR__ . '/..' . '/ulrichsg/getopt-php/src/Help.php',
         'GetOpt\\HelpInterface' => __DIR__ . '/..' . '/ulrichsg/getopt-php/src/HelpInterface.php',
         'GetOpt\\Operand' => __DIR__ . '/..' . '/ulrichsg/getopt-php/src/Operand.php',
         'GetOpt\\Option' => __DIR__ . '/..' . '/ulrichsg/getopt-php/src/Option.php',
         'GetOpt\\OptionParser' => __DIR__ . '/..' . '/ulrichsg/getopt-php/src/OptionParser.php',
+        'GetOpt\\Translator' => __DIR__ . '/..' . '/ulrichsg/getopt-php/src/Translator.php',
+        'GetOpt\\WithMagicGetter' => __DIR__ . '/..' . '/ulrichsg/getopt-php/src/WithMagicGetter.php',
         'GetOpt\\WithOperands' => __DIR__ . '/..' . '/ulrichsg/getopt-php/src/WithOperands.php',
         'GetOpt\\WithOptions' => __DIR__ . '/..' . '/ulrichsg/getopt-php/src/WithOptions.php',
         'StillAlive\\Main' => __DIR__ . '/../..' . '/src/Main.php',
@@ -69,9 +73,9 @@ class ComposerStaticInit9b65dea655d2ae3c3b1dc488948ae60c
     public static function getInitializer(ClassLoader $loader)
     {
         return \Closure::bind(function () use ($loader) {
-            $loader->prefixLengthsPsr4 = ComposerStaticInit9b65dea655d2ae3c3b1dc488948ae60c::$prefixLengthsPsr4;
-            $loader->prefixDirsPsr4 = ComposerStaticInit9b65dea655d2ae3c3b1dc488948ae60c::$prefixDirsPsr4;
-            $loader->classMap = ComposerStaticInit9b65dea655d2ae3c3b1dc488948ae60c::$classMap;
+            $loader->prefixLengthsPsr4 = ComposerStaticInit8c757d8b2adeb62e302998ff7096c236::$prefixLengthsPsr4;
+            $loader->prefixDirsPsr4 = ComposerStaticInit8c757d8b2adeb62e302998ff7096c236::$prefixDirsPsr4;
+            $loader->classMap = ComposerStaticInit8c757d8b2adeb62e302998ff7096c236::$classMap;
 
         }, null, ClassLoader::class);
     }

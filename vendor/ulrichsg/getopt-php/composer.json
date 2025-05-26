@@ -1,7 +1,7 @@
 {
     "name": "ulrichsg/getopt-php",
     "type": "library",
-    "description": "Command line arguments parser for PHP 5.4 - 7.1",
+    "description": "Command line arguments parser for PHP 5.4 - 7.3",
     "homepage": "http://getopt-php.github.io/getopt-php",
     "license": "MIT",
     "authors": [
@@ -15,7 +15,8 @@
         }
     ],
     "require": {
-        "php": ">=5.4.0"
+        "php": ">=5.4.0",
+        "ext-mbstring": "*"
     },
     "require-dev": {
         "phpunit/phpunit": "^4.8",
@@ -32,6 +33,8 @@
         }
     },
     "scripts": {
-        "code-style": "phpcs --standard=PSR2 src && phpcs --standard=PSR2 test"
+        "code-style": "vendor/bin/phpcs --standard=PSR2 src && vendor/bin/phpcs --standard=PSR2 test",
+        "test": "vendor/bin/phpunit -c phpunit.xml",
+        "coverage": "vendor/bin/phpunit -c phpunit.xml --coverage-clover=build/coverage.xml --coverage-html=build/coverage --coverage-text"
     }
 }

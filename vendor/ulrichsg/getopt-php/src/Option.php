@@ -11,8 +11,10 @@ use GetOpt\ArgumentException\Missing;
  * @package GetOpt
  * @author  Ulrich Schmidt-Goertz
  */
-class Option
+class Option implements Describable
 {
+    use WithMagicGetter;
+
     const CLASSNAME = __CLASS__;
 
     private $short;
@@ -26,7 +28,7 @@ class Option
      * Creates a new option.
      *
      * @param string   $short The option's short name (one of [a-zA-Z0-9?!§$%#]) or null for long-only options
-     * @param string   $long  The option's long name (a string of 2+ letter/digit/_/- characters, starting with a letter
+     * @param string   $long  The option's long name (a string of 1+ letter/digit/_/- characters, starting with a letter
      *                        or digit) or null for short-only options
      * @param string   $mode  Whether the option can/must have an argument (optional, defaults to no argument)
      */
@@ -35,10 +37,15 @@ class Option
         if (!$short && !$long) {
             throw new \InvalidArgumentException("The short and long name may not both be empty");
         }
+        if ($short == $long) {
+            throw new \InvalidArgumentException("The short and long names have to be unique");
+        }
         $this->setShort($short);
         $this->setLong($long);
         $this->setMode($mode);
         $this->argument = new Argument();
+        $this->argument->multiple($this->mode === GetOpt::MULTIPLE_ARGUMENT);
+        $this->argument->setOption($this);
     }
 
     /**
@@ -70,6 +77,16 @@ class Option
     /**
      * @return string
      */
+    public function getDescription()
+    {
+        return $this->description;
+    }
+
+    /**
+     * @deprecated will be removed in version 4
+     * @see getDescription
+     * @codeCoverageIgnore
+     */
     public function description()
     {
         return $this->description;
@@ -90,12 +107,13 @@ class Option
     /**
      * Defines a validation function for the option.
      *
-     * @param callable $function
+     * @param callable        $function
+     * @param string|callable $message
      * @return Option this object (for chaining calls)
      */
-    public function setValidation($function)
+    public function setValidation($function, $message = null)
     {
-        $this->argument->setValidation($function);
+        $this->argument->setValidation($function, $message);
         return $this;
     }
 
@@ -122,7 +140,9 @@ class Option
         if ($this->mode == GetOpt::NO_ARGUMENT) {
             throw new \InvalidArgumentException("Option should not have any argument");
         }
-        $this->argument = $arg;
+        $this->argument = clone $arg; // he can reuse his arg but we need a unique arg
+        $this->argument->multiple($this->mode === GetOpt::MULTIPLE_ARGUMENT);
+        $this->argument->setOption($this);
         return $this;
     }
 
@@ -147,6 +167,26 @@ class Option
     /**
      * @return string
      */
+    public function getShort()
+    {
+        return $this->short;
+    }
+
+    /**
+     * Returns long name or short name if long name is not set
+     *
+     * @return string
+     */
+    public function getName()
+    {
+        return $this->getLong() ?: $this->getShort();
+    }
+
+    /**
+     * @deprecated will be removed in version 4
+     * @see getShort
+     * @codeCoverageIgnore
+     */
     public function short()
     {
         return $this->short;
@@ -160,7 +200,7 @@ class Option
      */
     public function setLong($long)
     {
-        if (!(is_null($long) || preg_match("/^[a-zA-Z0-9][a-zA-Z0-9_-]{1,}$/", $long))) {
+        if (!(is_null($long) || preg_match("/^[a-zA-Z0-9][a-zA-Z0-9_-]*$/", $long))) {
             throw new \InvalidArgumentException(sprintf(
                 'Long option must be null or an alphanumeric string, found \'%s\'',
                 $long
@@ -172,6 +212,16 @@ class Option
 
     /**
      * @return string
+     */
+    public function getLong()
+    {
+        return $this->long;
+    }
+
+    /**
+     * @deprecated will be removed in version 4
+     * @see getLong
+     * @codeCoverageIgnore
      */
     public function long()
     {
@@ -207,6 +257,16 @@ class Option
     /**
      * @return mixed
      */
+    public function getMode()
+    {
+        return $this->mode;
+    }
+
+    /**
+     * @deprecated will be removed in version 4
+     * @see getMode
+     * @codeCoverageIgnore
+     */
     public function mode()
     {
         return $this->mode;
@@ -230,29 +290,18 @@ class Option
      */
     public function setValue($value = null)
     {
-        if ($value === null && in_array($this->mode, [ GetOpt::REQUIRED_ARGUMENT, GetOpt::MULTIPLE_ARGUMENT ])) {
-            throw new Missing(sprintf(
-                'Option \'%s\' must have a value',
-                $this->long() ?: $this->short()
-            ));
+        if ($value === null) {
+            if (in_array($this->mode, [ GetOpt::REQUIRED_ARGUMENT, GetOpt::MULTIPLE_ARGUMENT ])) {
+                throw new Missing(sprintf(
+                    GetOpt::translate('option-argument-missing'),
+                    $this->getName()
+                ));
+            }
+
+            $value = $this->argument->getValue() +1;
         }
 
-        if ($value === null || $this->mode() === GetOpt::NO_ARGUMENT) {
-            $value = $this->value === null ? 1 : $this->value + 1;
-        }
-
-        if ($this->getArgument()->hasValidation() && !$this->getArgument()->validates($value)) {
-            throw new Invalid(sprintf(
-                'Option \'%s\' has an invalid value',
-                $this->long() ?: $this->short()
-            ));
-        }
-
-        if ($this->mode === GetOpt::MULTIPLE_ARGUMENT) {
-            $this->value = $this->value === null ? [ $value ] : array_merge($this->value, [ $value ]);
-        } else {
-            $this->value = $value;
-        }
+        $this->argument->setValue($value);
 
         return $this;
     }
@@ -262,23 +311,20 @@ class Option
      *
      * @return mixed
      */
+    public function getValue()
+    {
+        $value = $this->argument->getValue();
+        return $value === null || $value === [] ? $this->argument->getDefaultValue() : $value;
+    }
+
+    /**
+     * @deprecated will be removed in version 4
+     * @see getValue
+     * @codeCoverageIgnore
+     */
     public function value()
     {
-        switch ($this->mode) {
-            case GetOpt::OPTIONAL_ARGUMENT:
-            case GetOpt::REQUIRED_ARGUMENT:
-                return $this->value === null ? $this->argument->getDefaultValue() : $this->value;
-
-            case GetOpt::MULTIPLE_ARGUMENT:
-                if ($this->value === null) {
-                    return $this->argument->getDefaultValue() ? [ $this->argument->getDefaultValue() ] : [];
-                }
-                return $this->value;
-
-            case GetOpt::NO_ARGUMENT:
-            default:
-                return $this->value;
-        }
+        return $this->getValue();
     }
 
     /**
@@ -288,7 +334,17 @@ class Option
      */
     public function __toString()
     {
-        $value = $this->value();
+        $value = $this->getValue();
         return !is_array($value) ? (string)$value : implode(',', $value);
+    }
+
+    /**
+     * Returns a human readable string representation of the object
+     *
+     * @return string
+     */
+    public function describe()
+    {
+        return sprintf('%s \'%s\'', GetOpt::translate('option'), $this->getName());
     }
 }

@@ -10,14 +10,27 @@ GetOpt.PHP is a library for command-line argument processing. It supports PHP ve
 
 ## Features
 
-* Supports both short (eg. `-v`) and long (eg. `--version`) options
+* Supports both short (e.g. `-v`) and long (e.g. `--version`) options
 * Option aliasing, ie. an option can have both a long and a short version
-* Collapsed short options (eg. `-abc` instead of `-a -b -c`)
-* Cumulative options (eg. `-vvv`)
-* Options may take optional or mandatory arguments
+* Cumulative short options (e.g. `-vvv`)
 * Two alternative notations for long options with arguments: `--option value` and `--option=value`
-* Collapsed short options with mandatory argument at the end (eg. `-ab 1` instead of `-a -b 1`)
-* Quoted arguments (eg. `--path "/some path/with spcaces"`)
+* Collapsed short options (e.g. `-abc` instead of `-a -b -c`), also with an argument for the last option 
+    (e.g. `-ab 1` instead of `-a -b 1`)
+* Two alternative notations for short options with arguments: `-o value` and `-ovalue`
+* Quoted arguments (e.g. `--path "/some path/with spcaces"`) for string processing
+* Options with multiple arguments (e.g. `--domain example.org --domain example.com`)
+* Operand (positional arguments) specification, validation and limitation
+* Command routing with specified options and operands
+* Help text generation
+* Default argument values
+* Argument validation
+
+## Upgrading
+
+If you are still using a legacy version of GetOpt.PHP, please consider upgrading to version 3.
+
+Only a few adjustments to your code are required to benefit from a lot of improvements.
+Refer to the [upgrade guide](https://getopt-php.github.io/getopt-php/upgrade.html) for details.
 
 ## Documentation
 
