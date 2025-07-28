@@ -18,6 +18,6 @@
 		}
 	```
 
-* Ensure your Composer install is at version 2.6 or later.
+* Ensure your Composer install is at version 2.8.9 or later.
 
 * Run `composer update --no-dev`
