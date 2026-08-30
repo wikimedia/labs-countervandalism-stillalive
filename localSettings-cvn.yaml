@@ -35,7 +35,6 @@ template-tasks:
       - { "name": "CVNBot3" } # #cvn-wp-es (Heavy)
       - { "name": "CVNBot4" } # #cvn-it-scan (Medium)
       - { "name": "CVNBot5" } # #cvn-meta (Light)
-      - { "name": "CVNBot11" } # #cvn-commons-uploads (Medium)
       - { "name": "CVNBot13" } # #cvn-wp-da (Light)
       # Beware: CVNBot14 is pinned to cvn-app10 for cvndb-publish.cron (see countervandalism/infrastructure.git:setup.yaml)
       - { "name": "CVNBot14" } # #cvn-commons (Heavy)
@@ -44,6 +43,7 @@ template-tasks:
       - { "name": "CVNBot20" } # #cvn-bn-scan (Light)
       - { "name": "CVNBot21" } # #cvn-mediawiki (Light)
     "CVNBot_v5@cvn-app10":
+      - { "name": "CVNBot11" } # #cvn-commons-uploads (Medium)
       - { "name": "CVNBot12" } # #cvn-wp-nl (Medium)
     #
     # Server: cvn-app12 (CPU: 4x, Memory: 8GB RAM)
