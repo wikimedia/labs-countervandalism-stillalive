@@ -31,20 +31,20 @@ template-tasks:
     #
     "CVNBot_v4@cvn-app10":
       - { "name": "CVNBot1" } # #cvn-wp-en (Heavy)
+      # Beware: CVNBot14 is pinned to cvn-app10 for cvndb-publish.cron (see countervandalism/infrastructure.git:setup.yaml)
+      - { "name": "CVNBot14" } # #cvn-commons (Heavy)
+      - { "name": "CVNBot18" } # #cvn-wikidata (Super Heavy)
+    "CVNBot_v5@cvn-app10":
       - { "name": "CVNBot2" } # #cvn-wp-ru (Medium)
       - { "name": "CVNBot3" } # #cvn-wp-es (Heavy)
       - { "name": "CVNBot4" } # #cvn-it-scan (Medium)
       - { "name": "CVNBot5" } # #cvn-meta (Light)
-      - { "name": "CVNBot13" } # #cvn-wp-da (Light)
-      # Beware: CVNBot14 is pinned to cvn-app10 for cvndb-publish.cron (see countervandalism/infrastructure.git:setup.yaml)
-      - { "name": "CVNBot14" } # #cvn-commons (Heavy)
-      - { "name": "CVNBot15" } # #cvn-simplewikis (Light)
-      - { "name": "CVNBot18" } # #cvn-wikidata (Super Heavy)
-      - { "name": "CVNBot20" } # #cvn-bn-scan (Light)
-      - { "name": "CVNBot21" } # #cvn-mediawiki (Light)
-    "CVNBot_v5@cvn-app10":
       - { "name": "CVNBot11" } # #cvn-commons-uploads (Medium)
       - { "name": "CVNBot12" } # #cvn-wp-nl (Medium)
+      - { "name": "CVNBot13" } # #cvn-wp-da (Light)
+      - { "name": "CVNBot15" } # #cvn-simplewikis (Light)
+      - { "name": "CVNBot20" } # #cvn-bn-scan (Light)
+      - { "name": "CVNBot21" } # #cvn-mediawiki (Light)
     #
     # Server: cvn-app12 (CPU: 4x, Memory: 8GB RAM)
     #
