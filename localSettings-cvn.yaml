@@ -3,20 +3,19 @@ parameters:
 cwd: "/tmp"
 user: "cvn.cvnservice"
 templates:
-  CVNBot_v4@cvn-app10:
-    cwd: "{cvn}/services/cvnbot/{name}"
-    cmd: "mono {cvn}/services/cvnbot/{name}/CVNBot.exe > /dev/null 2>&1"
-    match: "mono {cvn}/services/cvnbot/{name}/CVNBot.exe"
-    pool: "cvn-app10"
   CVNBot_v5@cvn-app10:
     pool: "cvn-app10"
-    cmd: "python3 /srv/cvn/git/pycvnbot/cvnbot --config /srv/cvn/services/cvnbot/{name}/CVNBot.ini > /dev/null 2>&1"
+    cmd: "python3 /srv/cvn/git/CVNBot/cvnbot --config /srv/cvn/services/cvnbot/{name}/CVNBot.ini > /dev/null 2>&1"
     match: "/srv/cvn/services/cvnbot/{name}/CVNBot.ini"
   CVNBot_v4@cvn-app12:
     cwd: "{cvn}/services/cvnbot/{name}"
     cmd: "mono {cvn}/services/cvnbot/{name}/CVNBot.exe > /dev/null 2>&1"
     match: "mono {cvn}/services/cvnbot/{name}/CVNBot.exe"
     pool: "cvn-app12"
+  CVNBot_v5@cvn-app12:
+    pool: "cvn-app12"
+    cmd: "python3 /srv/cvn/git/CVNBot/cvnbot --config /srv/cvn/services/cvnbot/{name}/CVNBot.ini > /dev/null 2>&1"
+    match: "/srv/cvn/services/cvnbot/{name}/CVNBot.ini"
   generic@cvn-app12:
     cwd: "{cvn}/services/cvnbot/{name}"
     cmd: "mono {cvn}/services/cvnbot/{name}/CVNBot.exe > /dev/null 2>&1"
@@ -29,7 +28,6 @@ template-tasks:
     # Server: cvn-app10 (CPU: 4x, Memory: 8GB RAM)
     # Load: 1 Super Heavy, 2 Heavy, 4 Medium
     #
-    "CVNBot_v4@cvn-app10":
     "CVNBot_v5@cvn-app10":
       - { "name": "CVNBot1" } # #cvn-wp-en (Heavy)
       - { "name": "CVNBot2" } # #cvn-wp-ru (Medium)
