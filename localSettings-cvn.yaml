@@ -52,8 +52,6 @@ template-tasks:
        match: "python3 {cvn}/git/CVNClerkBot/cvnclerkbot.py"
        user: false
     "CVNBot_v4@cvn-app12":
-      - { "name": "CVNBot7" } # #cvn-sw (SWMT group 2; Medium)
-      - { "name": "CVNBot8" } # #cvn-sw (SWMT group 3; Heavy)
       - { "name": "CVNBot9" } # #cvn-sw (SWMT group 4; Light)
       - { "name": "CVNBot10" } # #cvn-sw (SWMT group 5; Light)
       - { "name": "CVNBot16" } # #cvn-ja (Medium)
@@ -69,3 +67,5 @@ template-tasks:
       - { "name": "CVNBot29" } # #cvn-es-scan (Medium)
     "CVNBot_v5@cvn-app12":
       - { "name": "CVNBot6" } # #cvn-sw (SWMT group 1; Heavy)
+      - { "name": "CVNBot7" } # #cvn-sw (SWMT group 2; Medium)
+      - { "name": "CVNBot8" } # #cvn-sw (SWMT group 3; Heavy)
