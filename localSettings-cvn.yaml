@@ -1,5 +1,3 @@
-parameters:
-  cvn: "/srv/cvn"
 cwd: "/tmp"
 user: "cvn.cvnservice"
 templates:
@@ -8,25 +6,21 @@ templates:
     cmd: "python3 /srv/cvn/git/CVNBot/cvnbot --config /srv/cvn/services/cvnbot/{name}/CVNBot.ini > /dev/null 2>&1"
     match: "/srv/cvn/services/cvnbot/{name}/CVNBot.ini"
   CVNBot_v4@cvn-app12:
-    cwd: "{cvn}/services/cvnbot/{name}"
-    cmd: "mono {cvn}/services/cvnbot/{name}/CVNBot.exe > /dev/null 2>&1"
-    match: "mono {cvn}/services/cvnbot/{name}/CVNBot.exe"
     pool: "cvn-app12"
+    cwd: "/srv/cvn/services/cvnbot/{name}"
+    cmd: "mono /srv/cvn/services/cvnbot/{name}/CVNBot.exe > /dev/null 2>&1"
+    match: "mono /srv/cvn/services/cvnbot/{name}/CVNBot.exe"
   CVNBot_v5@cvn-app12:
     pool: "cvn-app12"
     cmd: "python3 /srv/cvn/git/CVNBot/cvnbot --config /srv/cvn/services/cvnbot/{name}/CVNBot.ini > /dev/null 2>&1"
     match: "/srv/cvn/services/cvnbot/{name}/CVNBot.ini"
-  generic@cvn-app12:
-    cwd: "{cvn}/services/cvnbot/{name}"
-    cmd: "mono {cvn}/services/cvnbot/{name}/CVNBot.exe > /dev/null 2>&1"
-    match: "mono {cvn}/services/cvnbot/{name}/CVNBot.exe"
-    pool: "cvn-app12"
+  generic@cvn-app15:
+    pool: "cvn-app15"
 
+# https://meta.wikimedia.org/wiki/Countervandalism_Network/Bots
 template-tasks:
-    # https://meta.wikimedia.org/wiki/Countervandalism_Network/Bots
     #
     # Server: cvn-app10 (CPU: 4x, Memory: 8GB RAM)
-    # Load: 1 Super Heavy, 2 Heavy, 4 Medium
     #
     "CVNBot_v5@cvn-app10":
       - { "name": "CVNBot1" } # #cvn-wp-en (Heavy)
@@ -46,11 +40,6 @@ template-tasks:
     #
     # Server: cvn-app12 (CPU: 4x, Memory: 8GB RAM)
     #
-    "generic@cvn-app12":
-      -
-       cmd: "python3 {cvn}/git/CVNClerkBot/cvnclerkbot.py > {cvn}/log/cvnclerkbot.log 2>&1"
-       match: "python3 {cvn}/git/CVNClerkBot/cvnclerkbot.py"
-       user: false
     "CVNBot_v4@cvn-app12":
       - { "name": "CVNBot9" } # #cvn-sw (SWMT group 4; Light)
       - { "name": "CVNBot10" } # #cvn-sw (SWMT group 5; Light)
@@ -69,3 +58,12 @@ template-tasks:
       - { "name": "CVNBot6" } # #cvn-sw (SWMT group 1; Heavy)
       - { "name": "CVNBot7" } # #cvn-sw (SWMT group 2; Medium)
       - { "name": "CVNBot8" } # #cvn-sw (SWMT group 3; Heavy)
+
+    #
+    # Server: cvn-app15 (CPU: 4x, Memory: 8GB RAM)
+    #
+    "generic@cvn-app15":
+      -
+       cmd: "python3 /srv/cvn/git/CVNClerkBot/cvnclerkbot.py > /srv/cvn/log/cvnclerkbot.log 2>&1"
+       match: "python3 /srv/cvn/git/CVNClerkBot/cvnclerkbot.py"
+       user: false
