@@ -1,42 +1,19 @@
 cwd: "/tmp"
 user: "cvn.cvnservice"
 templates:
-  CVNBot_v5@cvn-app10:
-    pool: "cvn-app10"
-    cmd: "python3 /srv/cvn/git/CVNBot/cvnbot --config /srv/cvn/services/cvnbot/{name}/CVNBot.ini > /dev/null 2>&1"
-    match: "/srv/cvn/services/cvnbot/{name}/CVNBot.ini"
-  CVNBot_v4@cvn-app12:
-    pool: "cvn-app12"
-    cwd: "/srv/cvn/services/cvnbot/{name}"
-    cmd: "mono /srv/cvn/services/cvnbot/{name}/CVNBot.exe > /dev/null 2>&1"
-    match: "mono /srv/cvn/services/cvnbot/{name}/CVNBot.exe"
   CVNBot_v5@cvn-app12:
     pool: "cvn-app12"
     cmd: "python3 /srv/cvn/git/CVNBot/cvnbot --config /srv/cvn/services/cvnbot/{name}/CVNBot.ini > /dev/null 2>&1"
     match: "/srv/cvn/services/cvnbot/{name}/CVNBot.ini"
   generic@cvn-app15:
     pool: "cvn-app15"
+  CVNBot_v5@cvn-app15:
+    pool: "cvn-app15"
+    cmd: "python3 /srv/cvn/git/CVNBot/cvnbot --config /srv/cvn/services/cvnbot/{name}/CVNBot.ini > /dev/null 2>&1"
+    match: "/srv/cvn/services/cvnbot/{name}/CVNBot.ini"
 
 # https://meta.wikimedia.org/wiki/Countervandalism_Network/Bots
 template-tasks:
-    #
-    # Server: cvn-app10 (CPU: 4x, Memory: 8GB RAM)
-    #
-    "CVNBot_v5@cvn-app10":
-      - { "name": "CVNBot1" } # #cvn-wp-en (Heavy)
-      - { "name": "CVNBot2" } # #cvn-wp-ru (Medium)
-      - { "name": "CVNBot3" } # #cvn-wp-es (Heavy)
-      - { "name": "CVNBot4" } # #cvn-it-scan (Medium)
-      - { "name": "CVNBot5" } # #cvn-meta (Light)
-      - { "name": "CVNBot11" } # #cvn-commons-uploads (Medium)
-      - { "name": "CVNBot12" } # #cvn-wp-nl (Medium)
-      - { "name": "CVNBot13" } # #cvn-wp-da (Light)
-      # Beware: CVNBot14 is pinned to cvn-app10 for cvndb-publish.cron (see countervandalism/infrastructure.git:setup.yaml)
-      - { "name": "CVNBot14" } # #cvn-commons (Heavy)
-      - { "name": "CVNBot15" } # #cvn-simplewikis (Light)
-      - { "name": "CVNBot18" } # #cvn-wikidata (Super Heavy)
-      - { "name": "CVNBot20" } # #cvn-bn-scan (Light)
-      - { "name": "CVNBot21" } # #cvn-mediawiki (Light)
     #
     # Server: cvn-app12 (CPU: 4x, Memory: 8GB RAM)
     #
@@ -66,3 +43,18 @@ template-tasks:
        cmd: "python3 /srv/cvn/git/CVNClerkBot/cvnclerkbot.py > /srv/cvn/log/cvnclerkbot.log 2>&1"
        match: "python3 /srv/cvn/git/CVNClerkBot/cvnclerkbot.py"
        user: false
+    "CVNBot_v5@cvn-app15":
+      - { "name": "CVNBot1" } # #cvn-wp-en (Heavy)
+      - { "name": "CVNBot2" } # #cvn-wp-ru (Medium)
+      - { "name": "CVNBot3" } # #cvn-wp-es (Heavy)
+      - { "name": "CVNBot4" } # #cvn-it-scan (Medium)
+      - { "name": "CVNBot5" } # #cvn-meta (Light)
+      - { "name": "CVNBot11" } # #cvn-commons-uploads (Medium)
+      - { "name": "CVNBot12" } # #cvn-wp-nl (Medium)
+      - { "name": "CVNBot13" } # #cvn-wp-da (Light)
+      # Beware: CVNBot14 is pinned to cvn-app10 for cvndb-publish.cron (see countervandalism/infrastructure.git:setup.yaml)
+      - { "name": "CVNBot14" } # #cvn-commons (Heavy)
+      - { "name": "CVNBot15" } # #cvn-simplewikis (Light)
+      - { "name": "CVNBot18" } # #cvn-wikidata (Super Heavy)
+      - { "name": "CVNBot20" } # #cvn-bn-scan (Light)
+      - { "name": "CVNBot21" } # #cvn-mediawiki (Light)
